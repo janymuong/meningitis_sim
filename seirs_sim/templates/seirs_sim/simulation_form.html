@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulation Parameters</title>
+</head>
+<body>
+    <!-- <h2>Simulation Parameters</h2> -->
+    <h1>Simulating a menigitis infection via a SEIRs model</h1>
+    <p>You can set model parameters as below and then view the results as a visual after the i
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Run Simulation</button>
+    </form>
+</body>
+</html>
