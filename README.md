@@ -1,6 +1,6 @@
 ## Agent-Based Modeling: Mock solution
 
-This is an implementation of an`Agent-Based Model` using `messa` Python package.
+This is an implementation of an`Agent-Based Model` using `Starsim` Python package.
 We implement a **SIR**-like  model. Is extended to:  
 
     - Susceptible
@@ -10,7 +10,7 @@ We implement a **SIR**-like  model. Is extended to:
     - etc
   
 
-Creating the `UI` and the backedn the server in Django, to set model parameters with minimum effort and view visualization. 
+Creating the `GUI` and the backend the server in Django, to set model parameters with minimum effort and view visualization. 
 
 ---
 ```shell
