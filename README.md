@@ -13,6 +13,7 @@ We implement a **SIR**-like  model. Is extended to:
 Creating the `UI` and the backedn the server in Django, to set model parameters with minimum effort and view visualization. 
 
 ---
+```shell
 $ cd meningitis_sim
 $ code .
 $
