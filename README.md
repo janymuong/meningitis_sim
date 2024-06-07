@@ -1,4 +1,4 @@
-## Agent-Based Modeling: Mock solution
+## Agent-Based Modeling: `Meningitis`
 
 This is an implementation of an`Agent-Based Model` using `Starsim` Python package.
 We implement a **SIR**-like  model. Is extended to:  
