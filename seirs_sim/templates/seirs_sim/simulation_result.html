@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simulation Result</title>
+    <title>Epicdemix Normal Simulation Result</title>
 </head>
 <body>
     <!-- <h2>Simulation Result</h2> -->
     <h1>The Petri-Dish Posse</h1>
-    <h5>Simulation Result</h5>
-    <p>These are the results of a normal infection spread dynamics for meningitis without any intervention strategy for your own intuitive understanding of it.</p>
-    <img src="{{ image_uri }}" alt="Simulation Result">
-    <img src="data:image/png;base64,{{ graphic }}" alt="Simulation Results">
+    <h5>Impactive Visualization</h5>
+    <p>These are the results of a normal infection spread dynamics <br/>for Meningitis without any intervention strategy for your own intuitive understanding of it.</p>
+    <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Menigitis Dynamics">
+    <!-- <img src="data:image/png;base64,{{ graphic }}" alt="Simulation Results"> -->
     <a href="{% url 'simulation_form' %}">Run another simulation</a>
 </body>
 </html>

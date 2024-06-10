@@ -3,14 +3,17 @@
 from django.db import models
 
 class SimulationParameters(models.Model):
-    # fields for a non-intervened infection dynamic
-    beta = models.FloatField(default=0.1) # infection rate
-    start = models.IntegerField(default=2000) # simulation start year
-    end = models.IntegerField(default=2100) # end year 2,100
-    dt = models.FloatField(default=1.0)
-    
-    # fields for vaccination
-    use_vaccine = models.BooleanField(default=False)  # whether to use vaccine
-    timestep = models.IntegerField(default=10)  # timestep to apply vaccine
-    prob = models.FloatField(default=0.5)  # probability of vaccination
-    imm_boost = models.FloatField(default=2.0)  # immunity boost from vaccine
+    dur_exp_inf = models.FloatField(default=2.0)  # Duration exposed to infectious
+    dur_exp_rec = models.FloatField(default=2.0)  # Duration exposed to recovered
+    dur_inf = models.FloatField(default=14.0)     # Duration of infection
+    dur_rec = models.FloatField(default=7.0)      # Duration of recovery
+    p_death = models.FloatField(default=0.05)     # Probability of death
+    p_symptoms = models.FloatField(default=0.4)   # Probability of showing symptoms
+    init_prev = models.FloatField(default=0.005)  # Initial prevalence
+    beta = models.FloatField(default=0.08)        # Transmission rate
+    rel_beta_inf = models.FloatField(default=0.5) # Reduction in transmission for infected vs exposed
+    waning = models.FloatField(default=1/1095)    # Immunity waning rate
+    imm_boost = models.FloatField(default=0.001)  # Immunity boost
+
+    def __str__(self):
+        return f"Simulation Parameters {self.id}"

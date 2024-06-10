@@ -1,16 +1,14 @@
+
+import os
+from django.conf import settings
+
 import numpy as np
 import sciris as sc
 import starsim as ss
 from starsim.diseases.sir import SIR
-import pylab as pl # plotting
-import matplotlib.pyplot as plt
-import io
-import urllib, base64
-import matplotlib.pyplot as plt
-import pandas as pd
+import pylab as pl
+# from .models import SimulationParameters
 
-
-age_data = pd.read_csv('nigeria_age.csv')
 
 __all__ = ['Meningitis']
 
@@ -20,7 +18,29 @@ class Meningitis(SIR):
         Initialize with parameters
         """
         pars = ss.omergeleft(pars,
-            # add to default parameters;
+            # dur_exp = 2,        # (days)
+            # dur_exp_rec = 2,        # (days)
+            # dur_inf = 4,        # (days)
+            # dur_rec = 2,        # (days)
+            # p_death = 0.07,    # (prob of death) 
+            # p_symptoms = 0.3,  # probability carrier moving to infectious 
+            # init_prev = 0.066, # Init cond
+            # beta = 0.5,         # Init cond
+            # waning = 1/(365*4),
+            # imm_boost = 1
+            
+            # dur_exp_inf = 2,        # (days)
+            # dur_exp_rec = 2,        # (days)
+            # dur_inf = 14,        # (days)
+            # dur_rec = 7,        # (days)
+            # p_death = 0.05,    # (prob of death) 
+            # p_symptoms = 0.2,  # probability of showing symptoms 
+            # init_prev = 0.005, # Init cond
+            # beta = 0.3,         # Init cond
+            # rel_beta_inf = 0.5, # Reduction in transmission for I versus E
+            # waning = 1/(365*3),
+            # imm_boost = 0.001
+
             dur_exp_inf = 2,        # (days)
             dur_exp_rec = 2,        # (days)
             dur_inf = 14,        # (days)
@@ -228,114 +248,27 @@ class Meningitis(SIR):
         pl.close()
         return fig
     
-
-class Vaccine(ss.Intervention):
-    def __init__(self, timestep=100, prob=0.5, imm_boost=2.0):
-        super().__init__()  # Initialize the intervention
-        self.timestep = timestep  # Store the timestep the vaccine is applied on
-        self.prob = prob  # Store the probability of vaccination
-        self.imm_boost = imm_boost  # Store the amount by which immunity is boosted
-
-    def apply(self, sim):  # Apply the vaccine
-        if sim.ti == self.timestep:  # Only apply on the matching timestep
-            meningitis = sim.diseases.meningitis  # Shorten the name of the disease module
-            eligible_ids = sim.people.uid[meningitis.susceptible]  # Only susceptible people are eligible
-            n_eligible = len(eligible_ids)  # Number of people who are eligible
-            to_vaccinate = self.prob > np.random.rand(n_eligible)  # Define which of the n_eligible people get vaccinated
-            vaccine_ids = eligible_ids[to_vaccinate]
-            meningitis.immunity[vaccine_ids] += self.imm_boost
-
-# Define People class
-class People(ss.People):
-    def update_post(self, sim):
-        self.age[self.alive] += 1 / 365
-        return self.age
-
-# Function to create the simulation
-def make_sim(seed=1, n_timesteps=50, use_vaccine=False, timestep=10, prob=0.5, imm_boost=2.0):
-    pars = dict(
-        n_agents=2000,
-        start=0,
-        end=n_timesteps,
-        dt=1.0,
-        verbose=0,
-        rand_seed=seed,
-        networks='random',
-        diseases=dict(
-            type='meningitis',
-            waning=0.009,
-        )
+def run_simulation(parameters):
+    meningitis = Meningitis(
+        pars={
+            'dur_exp_inf': parameters.dur_exp_inf,
+            'dur_exp_rec': parameters.dur_exp_rec,
+            'dur_inf': parameters.dur_inf,
+            'dur_rec': parameters.dur_rec,
+            'p_death': parameters.p_death,
+            'p_symptoms': parameters.p_symptoms,
+            'init_prev': parameters.init_prev,
+            'beta': parameters.beta,
+            'rel_beta_inf': parameters.rel_beta_inf,
+            'waning': parameters.waning,
+            'imm_boost': parameters.imm_boost,
+        }
     )
 
-    people = People(n_agents=2000, age_data=age_data)
-
-    if use_vaccine:
-        vaccine = Vaccine(timestep=timestep, prob=prob, imm_boost=imm_boost)
-        sim = ss.Sim(pars, people=people, interventions=vaccine)
-    else:
-        sim = ss.Sim(pars, people=people)
-
-    return sim
-
-# Function to run simulations with different vaccination probabilities
-def vac_prob(probs=[0.3, 0.5]):
-    for prob in probs:
-        n_seeds = 20
-        n_timesteps = 100
-        baseline_results = np.empty((n_seeds, n_timesteps + 1))
-        vaccine_results = np.empty((n_seeds, n_timesteps + 1))
-        difference_results = np.empty(n_seeds)
-        baseline_sims = []
-        vaccine_sims = []
-
-        for seed in range(n_seeds):
-            baseline_sim = make_sim(seed=seed, n_timesteps=n_timesteps)
-            vaccine_sim = make_sim(seed=seed, prob=prob, n_timesteps=n_timesteps, use_vaccine=True)
-            baseline_sims.append(baseline_sim)
-            vaccine_sims.append(vaccine_sim)
-
-        def run_sim(sim):
-            sim.run()
-            results = sc.objdict()
-            results.time = sim.yearvec
-            results.n_infected = sim.results.meningitis.n_infected
-            return results
-
-        baseline_sim_results = sc.parallelize(run_sim, baseline_sims)
-        vaccine_sim_results = sc.parallelize(run_sim, vaccine_sims)
-
-        for seed in range(n_seeds):
-            baseline = baseline_sim_results[seed]
-            vaccine = vaccine_sim_results[seed]
-            baseline_results[seed, :] = baseline.n_infected
-            vaccine_results[seed, :] = vaccine.n_infected
-            difference_results[seed] = baseline_results[seed, :].sum() - vaccine_results[seed, :].sum()
-
-        lower_bound_baseline = np.quantile(baseline_results, 0.05, axis=0)
-        median_baseline = np.quantile(baseline_results, 0.5, axis=0)
-        upper_bound_baseline = np.quantile(baseline_results, 0.95, axis=0)
-        lower_bound_vaccine = np.quantile(vaccine_results, 0.05, axis=0)
-        median_vaccine = np.quantile(vaccine_results, 0.5, axis=0)
-        upper_bound_vaccine = np.quantile(vaccine_results, 0.95, axis=0)
-
-        time = baseline_sim_results[0].time
-
-        lower_bound_diff = np.quantile(difference_results, 0.05)
-        upper_bound_diff = np.quantile(difference_results, 0.95)
-        median_diff = np.quantile(difference_results, 0.5)
-        xx = prob * 100
-        title = f'Estimated impact: {median_diff:.0f} (90% CI: {lower_bound_diff:.0f}, {upper_bound_diff:.0f}) infections averted (Prob: {xx}%)'
-
-        plt.figure()
-        plt.title(title)
-        plt.fill_between(time, lower_bound_baseline, upper_bound_baseline, alpha=0.5, label='Baseline 90% CI')
-        plt.plot(time, median_baseline, label='Baseline Median')
-        plt.fill_between(time, lower_bound_vaccine, upper_bound_vaccine, alpha=0.5, label='Vaccine 90% CI')
-        plt.plot(time, median_vaccine, label='With Vaccine Median')
-        plt.xlabel('Time')
-        plt.ylabel('Number of people infected')
-        plt.legend()
-        plt.ylim(bottom=0)
-        plt.xlim(left=0)
-        plt.savefig(f'figs/vaccine_whole_pop{xx}.png')
-        plt.show()
+    pars = dict(networks=dict(type='random'), start=2000, end=2030, dt=1, verbose=0)
+    sim = ss.Sim(pars, diseases=meningitis)
+    sim.run()
+    fig = meningitis.plot()
+    fig_path = os.path.join(settings.BASE_DIR, "static", "figs", "meningitis_dynamics.png")
+    fig.savefig(fig_path)
+    return fig
