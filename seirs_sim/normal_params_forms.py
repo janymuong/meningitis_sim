@@ -1,4 +1,4 @@
-# meningitis_sim/seirs_sim/forms.py
+# meningitis_sim/seirs_sim/normal_params_forms.py
 
 from django import forms
 from .models import SimulationParameters

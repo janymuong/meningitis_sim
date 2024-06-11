@@ -2,8 +2,9 @@
 
 from django.shortcuts import render, redirect
 from .normal_params_forms import SimulationParametersForm
-# from .models import SimulationParameters
+from .vaccine_form import VaccineSimulationForm
 from .simulation import run_simulation
+# from .vaccination import vac_prob
 
 def normal_simulation(request):
     if request.method == "POST":
@@ -18,3 +19,18 @@ def normal_simulation(request):
 
 def normal_simulation_result(request):
     return render(request, 'seirs_sim/normal_sim_result.html', {'image_path': 'static/figs/meningitis_dynamics.png'})
+
+def vaccine_simulation(request):
+    if request.method == "POST":
+        form = VaccineSimulationForm(request.POST)
+        if form.is_valid():
+            parameters = form.save()
+            run_simulation(parameters)
+            return redirect('vaccine_simulation_result')
+    else:
+        form = VaccineSimulationForm()
+    return render(request, 'seirs_sim/normal_sim_form.html', {'form': form})
+
+def vaccine_simulation_result(request):
+    return render(request, 'seirs_sim/vaccine_sim_result.html', {'image_path': 'static/figs/meningitis_dynamics.png'})
+

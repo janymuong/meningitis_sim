@@ -16,9 +16,10 @@ class SimulationParameters(models.Model):
     waning = models.FloatField(default=1/1095)    # Immunity waning rate
     imm_boost = models.FloatField(default=0.001)  # Immunity boost
 
-    # n_agents = forms.IntegerField(label='Number of Agents', min_value=1)
-    # n_timesteps = forms.IntegerField(label='Number of Timesteps', min_value=1)
-    # imm_boost = forms.FloatField(label='Immunity Boost', min_value=0)
+    # vaccine simulation model parameters;
+    n_agents = models.IntegerField(default=2000)
+    n_timesteps = models.IntegerField(default=20)
+    # imm_boost = models.FloatField(default=0.001)
 
     def __str__(self):
         return f"Simulation Parameters {self.id}"
