@@ -22,6 +22,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('simulation/', views.simulation_form, name='simulation_form'),
-    path('result/', views.simulation_result, name='simulation_result'),
+    path('simulation/', views.normal_simulation, name='normal_simulation'),
+    path('result/', views.normal_simulation_result, name='normal_simulation_result'),
 ]
