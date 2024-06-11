@@ -10,11 +10,11 @@
     <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population.</p>
     <form method="post">
         {% csrf_token %}
-        <h3>Normal Simulation Parameters</h3>
+        <h3>Simulation Parameters</h3>
         {{ form.as_p }}
 
-        <h3>Vaccine Simulation Parameters</h3>
-        {{ vaccine_form.as_p }}
+        <!-- <h3>Vaccine Simulation Parameters</h3> -->
+        <!-- {{ vaccine_form.as_p }} -->
 
         <button type="submit">Run Simulation</button>
     </form>
