@@ -1,3 +1,5 @@
+# meningitis_sim/seirs_sim/views.py
+
 from django.shortcuts import render, redirect
 from .forms import SimulationParametersForm
 # from .models import SimulationParameters

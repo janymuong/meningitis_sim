@@ -1,3 +1,4 @@
+# meningitis_sim/seirs_sim/simulation.py
 
 import os
 from django.conf import settings
