@@ -13,16 +13,17 @@ We implement a **SIR**-like  model. Is extended to `SEIRs`:
 Creating the `GUI` and the backend the server in Django, to set model parameters with minimum effort and view visualization. 
 
 ---
-## Environment Set-Up
+## `Environment Set-Up`
 
-`Virtual Environments` - It's recommended to leverage a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
+It's recommended to leverage a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
 
 - Create a siloed virtual environment with Python 3.7 and **activate** it. You should have Python 3.12 available in your host/local machine. 
 Check the Python path using `which python3`
 ```bash
 python3 -m pip install --user virtualenv 
-# use a command similar to this one to create environment: on parent of Django app
+# use a command similar to this one to create environment:
+# on parent of root Django project directory;
 python3 -m virtualenv --python=<path-to-python3.12> ../.dj_sim
 source ../.dj_sim/bin/activate
 ```
