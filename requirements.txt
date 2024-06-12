@@ -1,0 +1,8 @@
+django
+matplotlib==3.9.0
+numpy
+pandas
+# matplotlib
+starsim==0.3.4
+sciris
+ipykernel
