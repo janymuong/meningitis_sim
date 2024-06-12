@@ -1,7 +1,8 @@
-## Agent-Based Modeling: `Meningitis`
+## The Petri-Dish Posse: 
+> Agent-Based Modeling: `Meningitis`  
 
 This is an implementation of an`Agent-Based Model` using `Starsim` Python package.
-We implement a **SIR**-like  model. Is extended to `SEIRs`:  
+We implement a `SIR`-like  model. Is extended to `SEIRs`:  
 
     - Susceptible
     - Exposed 
@@ -12,6 +13,17 @@ We implement a **SIR**-like  model. Is extended to `SEIRs`:
 
 Creating the `GUI` and the backend the server in Django, to set model parameters with minimum effort and view visualization. 
 
+## Background Context - Mathematical Modelling
+Mathematical and computational models have become increasingly central in __epidemiological__ research, and particularly for __infectious diseases__. This solution is a system that bridges the gap between mathematical modelling and real-world problem domains to provide insights into how infection works in a population and gauge how intervention strategies (e.g. vaccination, treatment) can be used in the mix to counter infection. This would be used to make data-driven decisions or influence healthcare or lifestyle choices for individuals, agencies, organizations and even governments. In this context we use Agent-Based Modeling.
+
+### WHAT `Agent-Based Modelling` IS
+> Extending SIR to SEIRs, or SVEIDRs  
+
+Think of Agent-Based Modeling as a system of computational models that simulate behavior of individual agents in order to study emergent phenomena - in terms of disease infection in a population. Agents may represent *humans, institutions, microorganisms*, and *disease vectors* and so forth. The agents’ actions are based on autonomous decision-making and other behavioral traits, implemented through formal rules of interaction in an environment.
+By **simulating interactions** at the individual level, ABM provides a unique lens through which complex systems can be examined and understood. This modelling approach allows for manipulating numerous variables to create detailed scenarios, offering insights into how different vaccination strategies might perform under various epidemiological and social conditions. For example, ABMs can elucidate how age-specific vaccination thresholds affect **herd immunity** in localized populations or how interventions can be optimized in response to seasonal outbreak patterns. The strength of ABM lies in its ability to incorporate a diverse range of data inputs, from population mobility patterns to individual health records, thereby producing more realistic and applicable insights for public health strategies. This capability is particularly crucial in regions like the African meningitis belt, where the heterogeneity of population density, health infrastructure, and social practices can significantly alter disease transmission dynamics. Applying ABM in this domain is a promising avenue for achieving a deeper, more operationally relevant understanding of how best to deploy vaccines and other interventions.
+
+> ### Read More:
+> [epidemix.jhubafrica.com/](https://epidemix.jhubafrica.com/)
 ---
 ## `Environment Set-Up`
 
