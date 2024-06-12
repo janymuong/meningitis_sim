@@ -19,29 +19,6 @@ class Meningitis(SIR):
         Initialize with parameters
         """
         pars = ss.omergeleft(pars,
-            # dur_exp = 2,        # (days)
-            # dur_exp_rec = 2,        # (days)
-            # dur_inf = 4,        # (days)
-            # dur_rec = 2,        # (days)
-            # p_death = 0.07,    # (prob of death) 
-            # p_symptoms = 0.3,  # probability carrier moving to infectious 
-            # init_prev = 0.066, # Init cond
-            # beta = 0.5,         # Init cond
-            # waning = 1/(365*4),
-            # imm_boost = 1
-            
-            # dur_exp_inf = 2,        # (days)
-            # dur_exp_rec = 2,        # (days)
-            # dur_inf = 14,        # (days)
-            # dur_rec = 7,        # (days)
-            # p_death = 0.05,    # (prob of death) 
-            # p_symptoms = 0.2,  # probability of showing symptoms 
-            # init_prev = 0.005, # Init cond
-            # beta = 0.3,         # Init cond
-            # rel_beta_inf = 0.5, # Reduction in transmission for I versus E
-            # waning = 1/(365*3),
-            # imm_boost = 0.001
-
             dur_exp_inf = 2,        # (days)
             dur_exp_rec = 2,        # (days)
             dur_inf = 14,        # (days)

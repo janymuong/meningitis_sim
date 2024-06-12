@@ -34,7 +34,7 @@ def make_sim(seed=1, n_agents=2000, n_timesteps=50, use_vaccine=False, timestep=
     people = People(n_agents=n_agents, age_data=age_data)
 
     if use_vaccine:
-        from vaccination import Vaccine
+        from .vaccination import Vaccine
         vaccine = Vaccine(timestep=timestep, prob=prob, imm_boost=imm_boost)
         sim = ss.Sim(pars, people=people, interventions=vaccine)
     else:

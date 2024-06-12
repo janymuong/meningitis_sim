@@ -22,8 +22,8 @@ class Vaccine(ss.Intervention):
             meningitis.immunity[vaccine_ids] += self.imm_boost
 
 def vac_prob(probs=[0.3, 0.5]):
-    from simulator import make_sim
-    
+    from .simulator import make_sim
+
     for prob in probs:
         n_seeds = 20
         n_timesteps = 100
@@ -83,4 +83,5 @@ def vac_prob(probs=[0.3, 0.5]):
         pl.ylim(bottom=0)
         pl.xlim(left=0)
         pl.savefig(f'static/figs/vaccine_whole_pop{xx}.png')
-        pl.show()
+        pl.close()  # close the plot to free up memory
+

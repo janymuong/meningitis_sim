@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('normal_simulation/', views.normal_simulation, name='normal_simulation'),
     path('normal_simulation_result/', views.normal_simulation_result, name='normal_simulation_result'),
-    path('vaccine_simulation/', views.vaccine_simulation, name='vaccine_simulation'),  # Assuming you have a view for vaccine simulation
-    path('vaccine_simulation_result/', views.vaccine_simulation_result, name='vaccine_simulation_result'),  # Assuming you have a view for vaccine simulation result
+    path('vaccine_simulation/', views.vaccine_simulation, name='vaccine_simulation'),  # view for vaccine simulation
+    path('vaccine_simulation_result/', views.vaccine_simulation_result, name='vaccine_simulation_result'),  # view for vaccine simulation result
 ]
 

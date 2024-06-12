@@ -1,12 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Vaccine Simulation Result</title>
 </head>
 <body>
-    <h1>Vaccine Simulation Result</h1>
-    <img src="{{ image_path }}" alt="Meningitis Dynamics">
-    <p>This is the result of the vaccine simulation.</p>
+    <!-- <h1>Vaccine Simulation Result</h1> -->
+    <h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
+    <h5>Impactive Visualizations - for data-driven decisions</h5>
+
+    <p>These are the results of an infection spread dynamic: <br/>for <strong>meningitis</strong> with an intervention strategy(<strong>vaccination</strong>) for your own intuitive understanding of it.</p>
+    <img src="{% static 'figs/vaccine_whole_pop30.0.png' %}" />
+    <img src="{% static 'figs/vaccine_whole_pop50.0.png' %}" />
     <!-- no graph generated yet from the sim[nit working] -->
 </body>
 </html>
