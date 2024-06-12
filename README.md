@@ -13,6 +13,7 @@ We implement a `SIR`-like  model. Is extended to `SEIRs`:
 
 Creating the `GUI` and the backend the server in Django, to set model parameters with minimum effort and view visualization. 
 
+---
 ## Background Context - Mathematical Modelling
 Mathematical and computational models have become increasingly central in __epidemiological__ research, and particularly for __infectious diseases__. This solution is a system that bridges the gap between mathematical modelling and real-world problem domains to provide insights into how infection works in a population and gauge how intervention strategies (e.g. vaccination, treatment) can be used in the mix to counter infection. This would be used to make data-driven decisions or influence healthcare or lifestyle choices for individuals, agencies, organizations and even governments. In this context we use Agent-Based Modeling.
 
