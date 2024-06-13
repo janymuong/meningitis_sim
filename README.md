@@ -1,17 +1,16 @@
 ## The Petri-Dish Posse  
 > Agent-Based Modeling: `Meningitis`  
 
-This is a **Python** implementation using `Starsim` package.
+This is a [**Python**](https://www.python.org/) implementation using `Starsim` package.
 We implement a `SIR`-like  model. Is extended to `SEIRs`:  
 
     - Susceptible
     - Exposed 
     - Infected
     - Recovered
-    - etc
-  
+    - etc  
 
-Creating the `GUI` and the backend the server in **Django**, to set model parameters with minimum effort and view visualization. 
+Creating an intuitive `GUI` and the backend the server in **Django**, to set model parameters with minimum effort and view impactive visualizations. 
 
 ---
 ## Background Context
