@@ -38,7 +38,7 @@ It's recommended to leverage a virtual environment whenever using Python for pro
 - Create a siloed virtual environment with **Python 3.12** and **activate** it. You should have **Python 3.12** available in your host/local machine. 
 Check the Python path using 
 ```bash
-which python3
+$ which python3
 ```
 ```bash
 python3 -m pip install --user virtualenv 
@@ -49,7 +49,7 @@ source ../.dj_sim/bin/activate
 ```
 > Alternatively, you could setup the virtualenv via `make setup` this [`Makefile`](./Makefile) is from a directive in.
 
-- Run `make install` to install Django, Starsim and other necessary dependencies. This will install all relevant pip packages for the project.
+- Run `make install` to install **Django**, **Starsim** and other dependencies for it. This will install all relevant pip packages for the project.
 
 ### Running the Simulation
 ```shell
