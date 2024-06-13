@@ -11,8 +11,8 @@ class VaccineSimulationForm(forms.ModelForm):
         model = SimulationParameters
         fields = ['n_agents', 'n_timesteps', 'probs', 'imm_boost']
         labels = {
-            'n_agents': 'Population of Agents',
-            'n_timesteps': 'Timesteps of Simulation',
-            'probs': 'Probabilities for Vaccination (comma-separated)',
-            'imm_boost': 'Immunity Boost from Vaccination'
+            'n_agents': 'Population of Agents:',
+            'n_timesteps': 'Timesteps of Simulation:',
+            'probs': 'Proportions of Vaccinated People (comma-separated):',
+            'imm_boost': 'Immunity Boost from Vaccination:'
         }

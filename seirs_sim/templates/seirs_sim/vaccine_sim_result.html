@@ -4,17 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vaccine Simulation Result</title>
+    <title>Intervention Strategies</title>
 </head>
 <body>
-    <h1>Vaccine Simulation Result</h1>
+    <h1><h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
     <h5>Impactive Visualizations - for data-driven decisions</h5>
 
-    <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with an intervention strategy (<strong>vaccination</strong>) based on different probabilities:</p>
+    <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating size of the population vaccinated. It shows how infection is averted .</p>
 
     {% for image_path in image_paths %}
         <img src="{% static image_path %}" />
     {% endfor %}
-    
+
 </body>
 </html>

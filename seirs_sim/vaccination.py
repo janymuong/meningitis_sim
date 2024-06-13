@@ -87,4 +87,5 @@ def vac_prob(probs=[0.3, 0.5]):
         pl.savefig(image_path)
         pl.close()  # close the plot to free up memory
 
-    return image_path  # Return the last generated image path
+    # timestep-based/the last generated image path
+    return image_path  

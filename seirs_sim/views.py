@@ -40,7 +40,7 @@ def vaccine_simulation(request):
     return render(request, 'seirs_sim/parameters_form.html', {'form': form})
 
 def vaccine_simulation_result(request, probs):
-    '''visualization of the population after the intervention
+    '''visualization of the population dynamics after the intervention
     '''
     probs_list = [float(prob.strip()) for prob in probs.split(',')]
     image_paths = [f'/figs/vaccine_whole_pop{prob * 100}.png' for prob in probs_list]

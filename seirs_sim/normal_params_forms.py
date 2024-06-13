@@ -10,8 +10,8 @@ class SimulationParametersForm(forms.ModelForm):
         model = SimulationParameters
         fields = ['beta', 'init_prev', 'dur_inf']
         labels = {
-            'beta': 'Infection Rate, ϐ',
-            'init_prev': 'Initial prevalence',
-            'dur_inf': 'Duration of infection',
+            'beta': 'Infection Rate, ϐ:',
+            'init_prev': 'Initial prevalence:',
+            'dur_inf': 'Duration of infection:',
         }
 

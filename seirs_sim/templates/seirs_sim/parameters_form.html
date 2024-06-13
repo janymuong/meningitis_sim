@@ -1,23 +1,21 @@
 <!-- meningitis_sim/seirs_sim/templates/seirs_sim/parameters_form.html -->
- <!-- form for the simulation parameters -->
+ 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Agent-Based Modeling - Parameters</title>
-</head>
-<body>
-    <h1>Agent-Based Modeling</h1>
-    <h5>Simulating a Meningitis Infection via a SEIRs model:</h5>
-    <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population.</p>
-    <form method="post">
-        {% csrf_token %}
-        <h3>Simulation Parameters</h3>
-        {{ form.as_p }}
+    <head>
+        <title>Agent-Based Modeling - Parameters</title>
+        </head>
+        <body>
+            <h1>Agent-Based Modeling</h1>
+            <h5>Simulating a Meningitis Infection via a <strong>SEIRs</strong> model:</h5>
+            <p>You can set model parameters below and see a visualization of the normal spread of the infection in a populati, and also how the infection works when there is an intervention.</p>
+            <!-- form for the simulation parameters -->
+            <form method="post">
+                {% csrf_token %}
+                <h3>Simulation Parameters</h3>
+                {{ form.as_p }}
 
-        <!-- <h3>Vaccine Simulation Parameters</h3> -->
-        <!-- {{ vaccine_form.as_p }} -->
-
-        <button type="submit">Run Simulation</button>
-    </form>
+                <button type="submit">Run Simulation</button>
+            </form>
 </body>
 </html>
