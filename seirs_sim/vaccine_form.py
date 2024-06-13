@@ -9,9 +9,10 @@ class VaccineSimulationForm(forms.ModelForm):
     with vaccination as intervention'''
     class Meta:
         model = SimulationParameters
-        fields = ['n_agents', 'n_timesteps', 'imm_boost']
+        fields = ['n_agents', 'n_timesteps', 'probs', 'imm_boost']
         labels = {
             'n_agents': 'Population of Agents',
             'n_timesteps': 'Timesteps of Simulation',
-            'imm_boost': 'Immunity Boost from Vaccination',
+            'probs': 'Probabilities for Vaccination (comma-separated)',
+            'imm_boost': 'Immunity Boost from Vaccination'
         }

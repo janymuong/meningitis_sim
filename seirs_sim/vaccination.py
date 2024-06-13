@@ -3,7 +3,7 @@
 import numpy as np
 import sciris as sc
 import starsim as ss
-import pylab as pl # plotting
+import pylab as pl  # plotting
 
 class Vaccine(ss.Intervention):
     def __init__(self, timestep=100, prob=0.5, imm_boost=2.0):
@@ -27,15 +27,15 @@ def vac_prob(probs=[0.3, 0.5]):
     for prob in probs:
         n_seeds = 20
         n_timesteps = 100
-        baseline_results = np.empty((n_seeds, n_timesteps+1))
-        vaccine_results  = np.empty((n_seeds, n_timesteps+1))
+        baseline_results = np.empty((n_seeds, n_timesteps + 1))
+        vaccine_results = np.empty((n_seeds, n_timesteps + 1))
         difference_results = np.empty(n_seeds)
         baseline_sims = []
         vaccine_sims = []
 
         for seed in range(n_seeds):
             baseline_sim = make_sim(seed=seed, n_timesteps=n_timesteps)
-            vaccine_sim  = make_sim(seed=seed, prob=prob, n_timesteps=n_timesteps, use_vaccine=True)
+            vaccine_sim = make_sim(seed=seed, prob=prob, n_timesteps=n_timesteps, use_vaccine=True)
             baseline_sims.append(baseline_sim)
             vaccine_sims.append(vaccine_sim)
 
@@ -47,7 +47,7 @@ def vac_prob(probs=[0.3, 0.5]):
             return results
 
         baseline_sim_results = sc.parallelize(run_sim, baseline_sims)
-        vaccine_sim_results  = sc.parallelize(run_sim, vaccine_sims)
+        vaccine_sim_results = sc.parallelize(run_sim, vaccine_sims)
 
         for seed in range(n_seeds):
             baseline = baseline_sim_results[seed]
@@ -57,11 +57,11 @@ def vac_prob(probs=[0.3, 0.5]):
             difference_results[seed] = baseline_results[seed, :].sum() - vaccine_results[seed, :].sum()
 
         lower_bound_baseline = np.quantile(baseline_results, 0.05, axis=0)
-        median_baseline      = np.quantile(baseline_results, 0.5, axis=0)
+        median_baseline = np.quantile(baseline_results, 0.5, axis=0)
         upper_bound_baseline = np.quantile(baseline_results, 0.95, axis=0)
-        lower_bound_vaccine  = np.quantile(vaccine_results, 0.05, axis=0)
-        median_vaccine       = np.quantile(vaccine_results, 0.5, axis=0)
-        upper_bound_vaccine  = np.quantile(vaccine_results, 0.95, axis=0)
+        lower_bound_vaccine = np.quantile(vaccine_results, 0.05, axis=0)
+        median_vaccine = np.quantile(vaccine_results, 0.5, axis=0)
+        upper_bound_vaccine = np.quantile(vaccine_results, 0.95, axis=0)
 
         time = baseline.time
 
@@ -76,12 +76,15 @@ def vac_prob(probs=[0.3, 0.5]):
         pl.fill_between(time, lower_bound_baseline, upper_bound_baseline, alpha=0.5)
         pl.plot(time, median_baseline, label='Baseline')
         pl.fill_between(time, lower_bound_vaccine, upper_bound_vaccine, alpha=0.5)
-        pl.plot(time, median_vaccine, label='With vaccine')
+        pl.plot(time, median_vaccine, label=f'With vaccine (Prob: {xx}%)')
         pl.xlabel('Time')
         pl.ylabel('Number of people infected')
         pl.legend()
         pl.ylim(bottom=0)
         pl.xlim(left=0)
-        pl.savefig(f'static/figs/vaccine_whole_pop{xx}.png')
+        image_filename = f'vaccine_whole_pop{xx}.png'
+        image_path = f'static/figs/{image_filename}'
+        pl.savefig(image_path)
         pl.close()  # close the plot to free up memory
 
+    return image_path  # Return the last generated image path

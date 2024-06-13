@@ -19,6 +19,7 @@ class SimulationParameters(models.Model):
     # vaccine simulation model parameters;
     n_agents = models.IntegerField(default=2000)
     n_timesteps = models.IntegerField(default=20)
+    probs = models.CharField(max_length=100, default='0.3, 0.5')
     # imm_boost = models.FloatField(default=0.001)
 
     def __str__(self):

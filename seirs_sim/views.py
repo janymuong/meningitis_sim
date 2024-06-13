@@ -24,18 +24,26 @@ def normal_simulation_result(request):
     return render(request, 'seirs_sim/normal_sim_result.html', {'image_path': 'static/figs/meningitis_dynamics.png'})
 
 def vaccine_simulation(request):
+    '''this route is for a simulation
+    of a population that is vaccinated
+    '''
     if request.method == "POST":
         form = VaccineSimulationForm(request.POST)
         if form.is_valid():
-            parameters = form.save()
+            parameters = form.save(commit=False)
+            probs = [float(prob.strip()) for prob in parameters.probs.split(',')]
             run_simulation(parameters)
-            vac_prob()
-            return redirect('vaccine_simulation_result')
+            vac_prob(probs=probs)  # pass probabilities to vac_prob function
+            return redirect('vaccine_simulation_result', probs=parameters.probs)
     else:
         form = VaccineSimulationForm()
     return render(request, 'seirs_sim/parameters_form.html', {'form': form})
 
-def vaccine_simulation_result(request):
-    img = ['static/figs/vaccine_whole_pop30.0.png', 'static/figs/vaccine_whole_pop50.0.png']
-    return render(request, 'seirs_sim/vaccine_sim_result.html', {'image_path': img})
+def vaccine_simulation_result(request, probs):
+    '''visualization of the population after the intervention
+    '''
+    probs_list = [float(prob.strip()) for prob in probs.split(',')]
+    image_paths = [f'/figs/vaccine_whole_pop{prob * 100}.png' for prob in probs_list]
+
+    return render(request, 'seirs_sim/vaccine_sim_result.html', {'image_paths': image_paths})
 

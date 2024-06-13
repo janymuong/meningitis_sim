@@ -1,3 +1,5 @@
+<!-- meningitis_sim/seirs_sim/templates/seirs_sim/vaccine_sim_result.html -->
+
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -5,13 +7,14 @@
     <title>Vaccine Simulation Result</title>
 </head>
 <body>
-    <!-- <h1>Vaccine Simulation Result</h1> -->
-    <h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
+    <h1>Vaccine Simulation Result</h1>
     <h5>Impactive Visualizations - for data-driven decisions</h5>
 
-    <p>These are the results of an infection spread dynamic: <br/>for <strong>meningitis</strong> with an intervention strategy(<strong>vaccination</strong>) for your own intuitive understanding of it.</p>
-    <img src="{% static 'figs/vaccine_whole_pop30.0.png' %}" />
-    <img src="{% static 'figs/vaccine_whole_pop50.0.png' %}" />
-    <!-- no graph generated yet from the sim[nit working] -->
+    <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with an intervention strategy (<strong>vaccination</strong>) based on different probabilities:</p>
+
+    {% for image_path in image_paths %}
+        <img src="{% static image_path %}" />
+    {% endfor %}
+    
 </body>
 </html>
