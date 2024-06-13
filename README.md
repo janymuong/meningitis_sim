@@ -47,7 +47,7 @@ python3 -m pip install --user virtualenv
 python3 -m virtualenv --python=<path-to-python3.12> ../.dj_sim
 source ../.dj_sim/bin/activate
 ```
-> Alternatively, you could setup the virtualenv via `make setup` this [`Makefile`](./Makefile) is from a directive in.
+> Alternatively, you could setup the virtual environment via `make setup` in this [`Makefile`](./Makefile).
 
 - Run `make install` to install **Django**, **Starsim** and other dependencies for it. This will install all relevant pip packages for the project.
 
