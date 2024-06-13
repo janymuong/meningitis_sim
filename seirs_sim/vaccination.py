@@ -69,7 +69,7 @@ def vac_prob(probs=[0.3, 0.5]):
         upper_bound_diff = np.quantile(difference_results, 0.95)
         median_diff = np.quantile(difference_results, 0.5)
         xx = prob * 100
-        title = f'Estimated impact: {median_diff:.0f} (90% CI: {lower_bound_diff:.0f}, {upper_bound_diff:.0f}) infections averted (Prob: {xx}%)'
+        title = f'Estimated Impact: \n {median_diff:.0f} (90% CI: {lower_bound_diff:.0f}, {upper_bound_diff:.0f}) infections averted (Prob: {xx}%)'
 
         pl.figure()
         pl.title(title)
