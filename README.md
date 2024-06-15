@@ -10,7 +10,7 @@ We implement a `SIR`-like  model. Is extended to `SEIRs`:
     - Recovered
     - etc  
 
-Creating an intuitive `GUI` and the backend the server in [**Django**](https://www.djangoproject.com/), to set model parameters with minimum effort and view impactive visualizations. 
+Creating an intuitive `GUI` and the backend the server in [**Django**](https://www.djangoproject.com/), to set model parameters with minimum effort and view impactive visualizations for data-driven decisions, not gut feelings :). 
 
 
 ## Premise
