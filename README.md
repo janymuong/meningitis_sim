@@ -23,8 +23,9 @@ Think of Agent-Based Modeling as a system of computational models that simulate 
 Agent-based modeling provides a unique lens through which complex systems can be examined and understood. This allows for manipulating numerous variables to create detailed scenarios, offering insights into how different vaccination strategies, and treatment might perform under various epidemiological and social conditions.
 
 
-> #### Read More on Agent-Based Modeling:
-> [epidemix.jhubafrica.com/](https://epidemix.jhubafrica.com/)  
+> Read More on Agent-Based Modeling: [epidemix.jhubafrica.com/](https://epidemix.jhubafrica.com/)  
+
+<!-- <br/> -->
 
 ### Starsim
 [Starsim](https://docs.idmod.org/projects/starsim/en/latest/) is an agent-based modeling framework in which users can design and configure simulations of diseases (or other health states) that progress over time within each agent and pass from one agent to the next along dynamic transmission networks. The framework explicitly supports co-transmission of multiple pathogens, allowing users to concurrently simulate several diseases while capturing behavioral and biological interactions. We use **Starsim** for the modeling and the simulating part of this project.
