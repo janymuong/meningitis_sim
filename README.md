@@ -12,11 +12,11 @@ We implement a `SIR`-like  model. Is extended to `SEIRs`:
 
 Creating an intuitive `GUI` and the backend the server in **Django**, to set model parameters with minimum effort and view impactive visualizations. 
 
----
-## Background Context
+
+## Premise
 Mathematical and computational models have become increasingly central in __epidemiological__ research, and particularly for __infectious diseases__. This solution is a system that bridges the gap between mathematical modelling and real-world problem domains to provide insights into how infection works in a population and gauge how intervention strategies (e.g. vaccination, treatment) can be used in the mix to counter infection. This would be used to make data-driven decisions or influence healthcare or lifestyle choices for individuals, agencies, organizations and even governments. In this context we use Agent-Based Modeling.
 
-### WHAT `Agent-Based Modelling` IS
+### WHAT `Agent-Based Modeling` IS
 > Extending **SIR** to **SEIRs**
 
 
@@ -24,12 +24,15 @@ Think of Agent-Based Modeling as a system of computational models that simulate 
 Agent-based modeling provides a unique lens through which complex systems can be examined and understood. This allows for manipulating numerous variables to create detailed scenarios, offering insights into how different vaccination strategies, and treatment might perform under various epidemiological and social conditions.
 
 
-> ### Read More:
+> #### Read More on Agent-Based Modeling:
 > [epidemix.jhubafrica.com/](https://epidemix.jhubafrica.com/)  
 
+### Starsim
+[Starsim](https://docs.idmod.org/projects/starsim/en/latest/) is an agent-based modeling framework in which users can design and configure simulations of diseases (or other health states) that progress over time within each agent and pass from one agent to the next along dynamic transmission networks. The framework explicitly supports co-transmission of multiple pathogens, allowing users to concurrently simulate several diseases while capturing behavioral and biological interactions. We use Starsim for the modeling and the simulating part of this project.
 
----
-## `Environment Set-Up`
+
+
+## Environment Set-Up
 
 It's recommended to leverage a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [Python Docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
 
@@ -50,7 +53,7 @@ source ../.dj_sim/bin/activate
 
 - Run `make install` to install **Django**, **Starsim** and other dependencies for it. This will install all relevant pip packages for the project.
 
-### Running the Simulation
+### Running Simulations
 ```shell
 # python manage.py makemigrations
 # python manage.py migrate
@@ -71,7 +74,6 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
 ```
-
 
 ---
 ```shell
