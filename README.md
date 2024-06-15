@@ -23,7 +23,7 @@ Think of Agent-Based Modeling as a system of computational models that simulate 
 Agent-based modeling provides a unique lens through which complex systems can be examined and understood. This allows for manipulating numerous variables to create detailed scenarios, offering insights into how different vaccination strategies, and treatment might perform under various epidemiological and social conditions.
 
 
-> Read More on Agent-Based Modeling: [epidemix.jhubafrica.com/](https://epidemix.jhubafrica.com/)  
+> Read More on Agent-Based Modeling: [epidemix.jhubafrica.com](https://epidemix.jhubafrica.com/)  
 
 <!-- <br/> -->
 
