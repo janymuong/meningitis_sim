@@ -31,7 +31,7 @@ Agent-based modeling provides a unique lens through which complex systems can be
 [Starsim](https://docs.idmod.org/projects/starsim/en/latest/) is an agent-based modeling framework in which users can design and configure simulations of diseases (or other health states) that progress over time within each agent and pass from one agent to the next along dynamic transmission networks. The framework explicitly supports co-transmission of multiple pathogens, allowing users to concurrently simulate several diseases while capturing behavioral and biological interactions. We use Starsim for the modeling and the simulating part of this project.
 
 
-
+---
 ## Environment Set-Up
 
 It's recommended to leverage a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virtual environment for your platform can be found in the [Python Docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/).
@@ -53,6 +53,15 @@ source ../.dj_sim/bin/activate
 
 - Run `make install` to install **Django**, **Starsim** and other dependencies for it. This will install all relevant pip packages for the project.
 
+
+```shell
+$ cd meningitis_sim
+$ code .
+$
+```
+
+
+---
 ### Running Simulations
 ```shell
 # python manage.py makemigrations
@@ -73,11 +82,4 @@ Django version 5.0.6, using settings 'meningitis_sim.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 
-```
-
----
-```shell
-$ cd meningitis_sim
-$ code .
-$
 ```
