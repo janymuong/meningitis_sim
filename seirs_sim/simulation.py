@@ -243,7 +243,7 @@ def run_simulation(parameters):
         }
     )
 
-    pars = dict(networks=dict(type='random'), start=2000, end=2030, dt=1, verbose=0)
+    pars = dict(networks=dict(type='random'), start=2000, end=2100, dt=1, verbose=0)
     sim = ss.Sim(pars, diseases=meningitis)
     sim.run()
     fig = meningitis.plot()
