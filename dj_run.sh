@@ -12,7 +12,7 @@
 # fi
 
 # activate the virtual environment
- source ../.dj_sim/bin/activate
+. ../.dj_sim/bin/activate
 
 # dependencies from requirements.txt
 # if [ -f "requirements.txt" ]; then
