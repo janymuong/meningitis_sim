@@ -1,3 +1,5 @@
+# setup virtual environment for simulation
+
 VENV_NAME := ../.dj_sim
 VENV_ACTIVATE := $(VENV_NAME)/bin/activate
 
