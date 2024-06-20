@@ -1,16 +1,19 @@
-# source .dj_sim/bin/activate
-
-VENV_NAME := .dj_sim
+VENV_NAME := ../.dj_sim
 VENV_ACTIVATE := $(VENV_NAME)/bin/activate
 
-.PHONY: setup activate install
+.PHONY: setup activate install run all
 
 setup:
-	python3 -m virtualenv ../$(VENV_NAME)
-activate:
-	source $(VENV_ACTIVATE)
-install:
-	# source $(VENV_ACTIVATE);
-	pip install -r requirements.txt
+	python3 -m virtualenv $(VENV_NAME)
 
-all: setup activate install
+activate:
+	@echo "Run 'source $(VENV_NAME)/bin/activate' to activate the virtual environment."
+
+install:
+	. $(VENV_ACTIVATE) && pip install -r requirements.txt
+
+run:
+	. $(VENV_ACTIVATE) && python manage.py runserver
+
+all: setup install
+	@echo "Run 'make activate' and 'source $(VENV_NAME)/bin/activate' to activate the virtual environment."
