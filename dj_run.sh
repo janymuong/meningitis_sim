@@ -7,12 +7,12 @@
 
 
 # create a virtual environment if it doesn't exist
-# if [ ! -d "venv" ]; then
-#    python3 -m venv venv
+# if [ ! -d "../.dj_sim" ]; then
+#    python3 -m virtualenv ../.dj_sim
 # fi
 
 # activate the virtual environment
-# source venv/bin/activate
+ source ../.dj_sim/bin/activate
 
 # dependencies from requirements.txt
 # if [ -f "requirements.txt" ]; then
