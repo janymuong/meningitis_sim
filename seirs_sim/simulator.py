@@ -5,7 +5,7 @@ import pandas as pd
 # import sciris as sc
 import starsim as ss
 
-age_data = pd.read_csv('csv_data/nigeria_age.csv')
+age_data = pd.read_csv('model_data/nigeria_age.csv')
 
 
 class People(ss.People):
