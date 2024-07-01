@@ -3,7 +3,7 @@
 from django import forms
 from .models import SimulationParameters
 
-class SimulationParametersForm(forms.ModelForm):
+class NormalSimulationParametersForm(forms.ModelForm):
     '''parameters for a simulation
     no intervention'''
     class Meta:

@@ -1,7 +1,7 @@
 # meningitis_sim/seirs_sim/views.py
 
 from django.shortcuts import render, redirect
-from .normal_params_forms import SimulationParametersForm
+from .normal_params_forms import NormalSimulationParametersForm
 from .vaccine_form import VaccineSimulationForm
 from .simulation import run_simulation
 from .vaccination import vac_prob
@@ -10,13 +10,13 @@ def normal_simulation(request):
     '''url/endpoint for a normal non-intervention sim
     '''
     if request.method == "POST":
-        form = SimulationParametersForm(request.POST)
+        form = NormalSimulationParametersForm(request.POST)
         if form.is_valid():
             parameters = form.save()
             run_simulation(parameters)
             return redirect('normal_simulation_result')
     else:
-        form = SimulationParametersForm()
+        form = NormalSimulationParametersForm()
     return render(request, 'seirs_sim/parameters_form.html', {'form': form})
 
 def normal_simulation_result(request):
