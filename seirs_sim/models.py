@@ -1,9 +1,10 @@
 # meningitis_sim/seirs_sim/models.py
 
 from django.db import models
-# from django import forms
 
 class SimulationParameters(models.Model):
+    '''defines the parametters the model will accept
+    '''
     dur_exp_inf = models.FloatField(default=2.0)  # Duration exposed to infectious
     dur_exp_rec = models.FloatField(default=2.0)  # Duration exposed to recovered
     dur_inf = models.FloatField(default=14.0)     # Duration of infection
