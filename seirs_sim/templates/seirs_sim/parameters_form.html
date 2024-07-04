@@ -1,9 +1,11 @@
 <!-- meningitis_sim/seirs_sim/templates/seirs_sim/parameters_form.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Agent-Based Modeling - Parameters</title>
+        <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
+        <script src="{% static 'js/sim.js' %}" defer></script>
         </head>
         <body>
             <h1>Agent-Based Modeling</h1>
@@ -15,7 +17,7 @@
                 <h3>Simulation Parameters</h3>
                 {{ form.as_p }}
 
-                <button type="submit">Run Simulation</button>
+                <button type="submit" class="submit_btn">Run Simulation</button>
             </form>
 </body>
 </html>

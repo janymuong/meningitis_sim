@@ -1,0 +1,17 @@
+body{
+    background-color: #000016;
+    color: aliceblue;
+}
+.slider{
+    width: 60%;
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+   
+
+}
+.submit_btn{
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
