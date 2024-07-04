@@ -2,3 +2,6 @@ __pycache__
 meningitis_sim/__pycache__
 seirs_sim/__pycache__
 static/figs/*.png
+seirs_sim/migrations/__pycache__
+db.sqlite3
+
