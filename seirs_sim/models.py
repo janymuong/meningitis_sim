@@ -23,5 +23,10 @@ class SimulationParameters(models.Model):
     probs = models.CharField(max_length=100, default='0.3, 0.5')
     # imm_boost = models.FloatField(default=0.001)
 
+
+    # age-based vaccine parameters - stores age range as a comma-separated string
+    # for lower bound of age range & upper bound of age range
+    age_range = models.CharField(max_length=100, default='0.75, 1.5')
+
     def __str__(self):
         return f"Simulation Parameters {self.id}"

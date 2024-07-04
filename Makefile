@@ -17,5 +17,8 @@ install:
 run:
 	. $(VENV_ACTIVATE) && python manage.py runserver
 
+migrate:
+	python manage.py makemigrations && python manage.py migrate
+
 all: setup install
 	@echo "Run 'make activate' and 'source $(VENV_NAME)/bin/activate' to activate the virtual environment."
