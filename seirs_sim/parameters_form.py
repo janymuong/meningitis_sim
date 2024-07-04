@@ -12,7 +12,27 @@ class NormalSimulationParametersForm(forms.ModelForm):
         labels = {
             'beta': 'Infection Rate, ϐ:',
             'init_prev': 'Initial prevalence:',
-            'dur_inf': 'Duration of infection:',
+            'dur_inf': 'Duration of infection (days):',
+        }
+        widgets = {
+            'beta': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '0', 'max': '1', 'step': '0.01',
+                'class': 'slider',
+                'id': 'beta-slider'
+            }),
+            'init_prev': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '0', 'max': '1', 'step': '0.001',
+                'class': 'slider',
+                'id': 'init-prev-slider'
+            }),
+            'dur_inf': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '0', 'max': '100', 'step': '1',
+                'class': 'slider',
+                'id': 'dur-inf-slider'
+            }),
         }
 
 
@@ -27,6 +47,26 @@ class VaccineSimulationForm(forms.ModelForm):
             'n_timesteps': 'Timesteps of Simulation:',
             'probs': 'Proportions of Vaccinated People (comma-separated):',
             'imm_boost': 'Immunity Boost from Vaccination:'
+        }
+        widgets = {
+            'n_agents': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '100', 'max': '10000', 'step': '100',
+                'class': 'slider',
+                'id': 'n-agents-slider'
+            }),
+            'n_timesteps': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '10', 'max': '60', 'step': '10',
+                'class': 'slider',
+                'id': 'n-timesteps-slider'
+            }),
+            'imm_boost': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '0', 'max': '5', 'step': '0.1',
+                'class': 'slider',
+                'id': 'imm-boost-slider'
+            }),
         }
 
     def __init__(self, *args, **kwargs):
@@ -47,6 +87,24 @@ class AgeBasedVaccineSimulationForm(forms.ModelForm):
             'age_range': 'Age Range for Vaccination (comma-separated lower and upper bounds, e.g., "0.75,1.5"):'
         }
         widgets = {
+            'n_agents': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '100', 'max': '10000', 'step': '100',
+                'class': 'slider',
+                'id': 'n-agents-slider'
+            }),
+            'n_timesteps': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '10', 'max': '1000', 'step': '10',
+                'class': 'slider',
+                'id': 'n-timesteps-slider'
+            }),
+            'imm_boost': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '0', 'max': '5', 'step': '0.1',
+                'class': 'slider',
+                'id': 'imm-boost-slider'
+            }),
             'probs': forms.TextInput(attrs={'placeholder': 'Comma-separated probabilities, e.g "0.5,1.0"'}),
             'age_range': forms.TextInput(attrs={'placeholder': 'Age range in years, e.g., "0.75,1.5"'}),
         }
