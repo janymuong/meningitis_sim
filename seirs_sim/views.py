@@ -1,9 +1,7 @@
 # meningitis_sim/seirs_sim/views.py
 
 from django.shortcuts import render, redirect
-from .normal_params_forms import NormalSimulationParametersForm
-from .vaccine_form import VaccineSimulationForm
-from .vaccine_age_form import AgeBasedVaccineSimulationForm
+from .parameters_form import NormalSimulationParametersForm, VaccineSimulationForm, AgeBasedVaccineSimulationForm
 from .simulation import run_simulation
 from .vaccination import vac_prob
 from .vaccination_age import vac_prob_age
