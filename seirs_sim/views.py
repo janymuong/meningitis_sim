@@ -1,7 +1,11 @@
 # meningitis_sim/seirs_sim/views.py
 
 from django.shortcuts import render, redirect
-from .parameters_form import NormalSimulationParametersForm, VaccineSimulationForm, AgeBasedVaccineSimulationForm
+from .parameters_form import (
+    NormalSimulationForm,
+    VaccineSimulationForm,
+    AgeBasedVaccineSimulationForm
+    )
 from .simulation import run_simulation
 from .vaccination import vac_prob
 from .vaccination_age import vac_prob_age
@@ -11,18 +15,19 @@ def normal_simulation(request):
     '''url/endpoint for a normal non-intervention sim
     '''
     if request.method == "POST":
-        form = NormalSimulationParametersForm(request.POST)
+        form = NormalSimulationForm(request.POST)
         if form.is_valid():
             parameters = form.save()
             run_simulation(parameters)
             return redirect('normal_simulation_result')
     else:
-        form = NormalSimulationParametersForm()
+        form = NormalSimulationForm()
     return render(request, 'seirs_sim/parameters_form.html', {'form': form})
 
 def normal_simulation_result(request):
     '''visualizations in terms of graphs for data-decision making'''
-    return render(request, 'seirs_sim/normal_sim_result.html', {'image_path': 'static/figs/meningitis_dynamics.png'})
+    return render(request, 'seirs_sim/normal_sim_result.html', 
+                  {'image_path': 'static/figs/meningitis_dynamics.png'})
 
 def vaccine_simulation(request):
     '''this route is for a simulation
