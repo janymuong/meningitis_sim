@@ -6,7 +6,7 @@ from .parameters_form import (
     VaccineSimulationForm,
     AgeBasedVaccineSimulationForm
     )
-from .simulation import run_simulation
+from .meningitis import run_simulation
 from .vaccination import vac_prob
 from .vaccination_age import vac_prob_age
 

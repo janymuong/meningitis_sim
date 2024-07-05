@@ -1,4 +1,4 @@
-# meningitis_sim/seirs_sim/simulation.py
+# meningitis_sim/seirs_sim/meningitis.py
 
 import os
 from django.conf import settings
@@ -19,14 +19,14 @@ class Meningitis(SIR):
         Initialize with parameters
         """
         pars = ss.omergeleft(pars,
-            dur_exp_inf = 2,        # (days)
-            dur_exp_rec = 2,        # (days)
-            dur_inf = 14,        # (days)
+            dur_exp_inf = 2,    # (days)
+            dur_exp_rec = 2,    # (days)
+            dur_inf = 14,       # (days)
             dur_rec = 7,        # (days)
-            p_death = 0.05,    # (prob of death) 
-            p_symptoms = 0.4,  # probability of showing symptoms 
-            init_prev = 0.005, # Init cond
-            beta = 0.08,         # Init cond
+            p_death = 0.05,     # (prob of death) 
+            p_symptoms = 0.4,   # probability of showing symptoms 
+            init_prev = 0.005,  # Init cond
+            beta = 0.08,        # Init cond
             rel_beta_inf = 0.5, # Reduction in transmission for I versus E
             waning = 1/(365*3),
             imm_boost = 0.001
@@ -119,7 +119,8 @@ class Meningitis(SIR):
         return
 
     def set_prognoses(self, sim, uids, source_uids=None):
-        """ Set prognoses for those who get infected """
+        '''Set prognoses for those who get infected
+        '''
         # Do not call set_prognosis on parent
         # super().set_prognoses(sim, uids, source_uids)
 
@@ -169,12 +170,12 @@ class Meningitis(SIR):
         return
 
     def make_new_cases(self, sim):
-        """
+        '''
         Add new cases of module, through transmission, incidence, etc.
-        
+    
         Common-random-number-safe transmission code works by mapping edges onto
         slots.
-        """
+        '''
         new_cases = []
         sources = []
         people = sim.people
@@ -218,15 +219,24 @@ class Meningitis(SIR):
         return new_cases, sources
         
     def plot(self):
-        """ Default plot for SEIRS model """
+        ''' default plot for SEIRS model
+        '''
         fig = pl.figure()
         for rkey in ['susceptible', 'exposed', 'infected', 'recovered']:
             pl.plot(self.results['n_'+rkey], label=rkey.title())
+
+        pl.title('Meningitis Simulation Dynamics')
+        pl.xlabel('Time')
+        pl.ylabel('Number of Individuals - SEIRs Compartments')
+        pl.legend()
         pl.legend()
         pl.close()
         return fig
     
 def run_simulation(parameters):
+    '''this method runs the simulation
+    with paramaters passed to the model from the UI
+    '''
     meningitis = Meningitis(
         pars={
             'dur_exp_inf': parameters.dur_exp_inf,

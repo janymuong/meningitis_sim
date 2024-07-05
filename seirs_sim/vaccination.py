@@ -5,6 +5,7 @@ import sciris as sc
 import starsim as ss
 import pylab as pl  # plotting
 
+
 class Vaccine(ss.Intervention):
     def __init__(self, timestep=100, prob=0.5, imm_boost=2.0):
         super().__init__()
