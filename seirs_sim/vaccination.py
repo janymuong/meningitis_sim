@@ -3,7 +3,7 @@
 import numpy as np
 import sciris as sc
 import starsim as ss
-import pylab as pl  # plotting
+import matplotlib.pyplot as plt  # plotting/visualizations
 
 
 class Vaccine(ss.Intervention):
@@ -72,21 +72,21 @@ def vac_prob(probs=[0.3, 0.5]):
         xx = prob * 100
         title = f'Estimated Impact: \n {median_diff:.0f} (90% CI: {lower_bound_diff:.0f}, {upper_bound_diff:.0f}) infections averted (Prob: {xx}%)'
 
-        pl.figure()
-        pl.title(title)
-        pl.fill_between(time, lower_bound_baseline, upper_bound_baseline, alpha=0.5)
-        pl.plot(time, median_baseline, label='Baseline')
-        pl.fill_between(time, lower_bound_vaccine, upper_bound_vaccine, alpha=0.5)
-        pl.plot(time, median_vaccine, label=f'With vaccine (Prob: {xx}%)')
-        pl.xlabel('Time')
-        pl.ylabel('Number of people infected')
-        pl.legend()
-        pl.ylim(bottom=0)
-        pl.xlim(left=0)
+        plt.figure()
+        plt.title(title)
+        plt.fill_between(time, lower_bound_baseline, upper_bound_baseline, alpha=0.5)
+        plt.plot(time, median_baseline, label='Baseline')
+        plt.fill_between(time, lower_bound_vaccine, upper_bound_vaccine, alpha=0.5)
+        plt.plot(time, median_vaccine, label=f'With vaccine (Prob: {xx}%)')
+        plt.xlabel('Time')
+        plt.ylabel('Number of people infected')
+        plt.legend()
+        plt.ylim(bottom=0)
+        plt.xlim(left=0)
         image_filename = f'vaccine_whole_pop{xx}.png'
         image_path = f'static/figs/{image_filename}'
-        pl.savefig(image_path)
-        pl.close()  # close the plot to free up memory
+        plt.savefig(image_path)
+        plt.close()  # close the plot to free up memory
 
     # timestep-based/the last generated image path
     return image_path  

@@ -4,10 +4,10 @@ import os
 from django.conf import settings
 
 import numpy as np
-import sciris as sc
+# import sciris as sc
 import starsim as ss
 from starsim.diseases.sir import SIR
-import pylab as pl
+import matplotlib.pyplot as plt # plotting/visualizations
 # from .models import SimulationParameters
 
 
@@ -221,16 +221,16 @@ class Meningitis(SIR):
     def plot(self):
         ''' default plot for SEIRS model
         '''
-        fig = pl.figure()
+        fig = plt.figure()
         for rkey in ['susceptible', 'exposed', 'infected', 'recovered']:
-            pl.plot(self.results['n_'+rkey], label=rkey.title())
+            plt.plot(self.results['n_'+rkey], label=rkey.title())
 
-        pl.title('Meningitis Simulation Dynamics')
-        pl.xlabel('Time')
-        pl.ylabel('Number of Individuals - SEIRs Compartments')
-        pl.legend()
-        pl.legend()
-        pl.close()
+        plt.title('Meningitis Simulation Dynamics')
+        plt.xlabel('Time')
+        plt.ylabel('Number of Individuals - SEIRs Compartments')
+        plt.legend()
+        plt.legend()
+        plt.close()
         return fig
     
 def run_simulation(parameters):
