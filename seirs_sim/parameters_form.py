@@ -108,7 +108,7 @@ class AgeBasedVaccineSimulationForm(forms.ModelForm):
             'probs': forms.TextInput(attrs={'placeholder': 'Comma-separated probabilities, e.g "0.5,1.0"'}),
             'age_range': forms.TextInput(attrs={'placeholder': 'Age range in years, e.g., "0.75,1.5"'}),
         }
-    
+
     def __init__(self, *args, **kwargs):
         super(AgeBasedVaccineSimulationForm, self).__init__(*args, **kwargs)
         self.fields['imm_boost'].initial = 2.0
