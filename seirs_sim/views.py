@@ -4,11 +4,13 @@ from django.shortcuts import render, redirect
 from .parameters_form import (
     NormalSimulationForm,
     VaccineSimulationForm,
-    AgeBasedVaccineSimulationForm
+    AgeBasedVaccineSimulationForm,
+    TreatmentSimulationForm
     )
 from .meningitis import run_simulation
 from .vaccination import vac_prob
 from .vaccination_age import vac_prob_age
+from .treatment import treat_prob
 
 
 def normal_simulation(request):
@@ -29,6 +31,7 @@ def normal_simulation_result(request):
     return render(request, 'seirs_sim/normal_sim_result.html', 
                   {'image_path': 'static/figs/meningitis_dynamics.png'})
 
+
 def vaccine_simulation(request):
     '''this route is for a simulation
     of a population that is vaccinated
@@ -44,6 +47,7 @@ def vaccine_simulation(request):
     else:
         form = VaccineSimulationForm()
     return render(request, 'seirs_sim/parameters_form.html', {'form': form})
+
 
 def vaccine_simulation_result(request, probs):
     '''visualization of the population dynamics after the intervention
@@ -75,3 +79,30 @@ def age_based_vaccine_simulation_result(request, probs):
     image_paths = [f'/figs/vaccine_9-18_moths{prob * 100}.png' for prob in probs_list]
 
     return render(request, 'seirs_sim/age_based_vaccine_sim_result.html', {'image_paths': image_paths})
+
+
+def treatment_simulation(request):
+    '''this is a route/view for a population that is treated
+    '''
+    if request.method == 'POST':
+        form = TreatmentSimulationForm(request.POST)
+        if form.is_valid():
+            paramaters = form.save(commit=False)
+            # prepare to run multiple times
+            probs = [float(prob.strip()) for prob in paramaters.probs.split(',')]
+            treat_prob(probs)
+
+            return redirect('treatment_simulation_result', probs=paramaters.probs)
+    else:
+        form = TreatmentSimulationForm()
+    return render(request, 'seirs_sim/parameters_form.html', {'form': form})
+
+
+def treatment_simulation_result(request, probs):
+    '''visualization of the population dynamics:
+    after treatment as an intervention stategy
+    '''
+    probs_list = [float(prob.strip()) for prob in probs.split(',')]
+    image_paths = [f'/figs/treatment_visualization{prob}.png' for prob in probs_list]
+
+    return render(request, 'seirs_sim/treatment_sim_result.html', {'image_paths': image_paths})

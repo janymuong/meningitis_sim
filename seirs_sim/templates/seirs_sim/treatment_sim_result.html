@@ -1,0 +1,21 @@
+<!-- meningitis_sim/seirs_sim/templates/seirs_sim/treatment_sim_result.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Treatment - Intervention Strategies</title>
+</head>
+<body>
+    <h1>The Petri-Dish Posse - Treatment Simulation Result</h1>
+    <h5>Impactive Visualizations - for data-driven decisions</h5>
+    <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population treated. It shows how infection is averted after this intervention.</p>
+
+    {% for image_path in image_paths %}
+        <img src="{% static image_path %}" alt="Treatment Simulation Simulation Result" />
+    {% endfor %}
+</body>
+</html>
+
+

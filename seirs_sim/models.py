@@ -2,6 +2,7 @@
 
 from django.db import models
 
+
 class SimulationParameters(models.Model):
     '''defines the parametters the model will accept
     '''
@@ -28,5 +29,8 @@ class SimulationParameters(models.Model):
     # for lower bound of age range & upper bound of age range
     age_range = models.CharField(max_length=100, default='0.75, 1.5')
 
+    # used in treatment as an intervention;
+    mean_dur_infection = models.FloatField(default=5.0)
+
     def __str__(self):
-        return f"Simulation Parameters {self.id}"
+        return f'Simulation Parameters {self.id}'

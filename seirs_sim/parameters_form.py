@@ -113,3 +113,41 @@ class AgeBasedVaccineSimulationForm(forms.ModelForm):
         super(AgeBasedVaccineSimulationForm, self).__init__(*args, **kwargs)
         self.fields['imm_boost'].initial = 2.0
         self.fields['probs'].initial = '0.5,1.0'
+
+
+class TreatmentSimulationForm(forms.ModelForm):
+    '''Parameters for a simulation with treatment as intervention'''
+    class Meta:
+        model = SimulationParameters
+        fields = ['n_agents', 'n_timesteps', 'probs', 'mean_dur_infection']
+        labels = {
+            'n_agents': 'Population of Agents:',
+            'n_timesteps': 'Timesteps of Simulation:',
+            'probs': 'Comparative Proportions of Treated People (comma-separated):',
+            'mean_dur_infection': 'Mean Duration of Infection (days):'
+        }
+        widgets = {
+            'n_agents': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '100', 'max': '10000', 'step': '100',
+                'class': 'slider',
+                'id': 'n-agents-slider'
+            }),
+            'n_timesteps': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '10', 'max': '1000', 'step': '10',
+                'class': 'slider',
+                'id': 'n-timesteps-slider'
+            }),
+            'probs': forms.TextInput(attrs={'placeholder': 'Comma-separated probabilities, e.g "0.3,0.5,0.6,0.8,1.0"'}),
+            'mean_dur_infection': forms.NumberInput(attrs={
+                'type': 'range',
+                'min': '1', 'max': '100', 'step': '1',
+                'class': 'slider',
+                'id': 'mean-dur-infection-slider'
+            }),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(TreatmentSimulationForm, self).__init__(*args, **kwargs)
+        self.fields['probs'].initial = '0.3,0.5,0.6,0.8,1.0'
