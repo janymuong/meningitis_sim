@@ -20,8 +20,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from seirs_sim import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.sim, name='sim'),
     path('simulation/', include('seirs_sim.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

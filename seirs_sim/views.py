@@ -13,6 +13,12 @@ from .vaccination_age import vac_prob_age
 from .treatment import treat_prob
 
 
+def sim(request):
+    '''this route renders the homepage with links to different simulations.
+    '''
+    return render(request, 'seirs_sim/index.html')
+
+
 def normal_simulation(request):
     '''url/endpoint for a normal non-intervention sim
     '''
