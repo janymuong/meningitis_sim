@@ -8,16 +8,34 @@
         <script src="{% static 'js/sim.js' %}" defer></script>
         </head>
         <body>
-            <h1>Agent-Based Modeling</h1>
-            <h5>Simulating a Meningitis Infection via a <strong>SEIRs</strong> model:</h5>
-            <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population,<br/> and also how the infection works when there is an intervention.</p>
-            <!-- form for the simulation parameters -->
-            <form method="post">
-                {% csrf_token %}
-                <h3>Simulation Parameters</h3>
-                {{ form.as_p }}
+            <header>
+                <nav class="navbar">
+                    <div class="logo">
+                        <img src="{% static 'img/thepetridish-posse-python.png' %}" alt="Logo">
+                    </div>
+                    <ul class="nav-links">
+                        <li><a href="{% url 'normal_simulation' %}">Normal Simulation</a></li>
+                        <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
+                        <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
+                        <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="container">
+                <h1>Agent-Based Modeling</h1>
+                <h5>Simulating a Meningitis Infection via a <strong>SEIRs</strong> model:</h5>
+                <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population,<br/> and also how the infection works when there is an intervention.</p>
+                <div class="simcont">
+                    <!-- form for the simulation parameters -->
+                    <form method="post">
+                        {% csrf_token %}
+                        <h3>Simulation Parameters</h3>
+                        {{ form.as_p }}
 
-                <button type="submit" class="submit_btn">Run Simulation</button>
-            </form>
+                        <button type="submit" class="submit_btn">Run Simulation</button>
+                    </form>
+                </div>
+            </div>
+            
 </body>
 </html>
