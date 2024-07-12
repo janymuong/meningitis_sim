@@ -5,8 +5,24 @@
 <html>
 <head>
     <title>Normal Simulation Result</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
     <link rel="stylesheet" type="text/css" href="{%static 'style/result.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
 </head>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'img/thepetridish-posse-python.svg' %}" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
+            <li><a href="{% url 'normal_simulation' %}"> ♻️Run Another Simulation</a></li>
+            <!-- <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
+            <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
+            <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li> -->
+        </ul>
+    </nav>
+</header>
 <body>
 
     <h1>The Petri-Dish Posse</h1>
@@ -14,6 +30,6 @@
     <p>These are the results of a normal infection spread dynamics: <br/>for <strong>meningitis</strong> without any intervention strategy for your own intuitive understanding of it.</p>
     <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Menigitis Dynamics">
 
-    <a href="{% url 'normal_simulation' %}">Run another simulation</a>
+    <!-- <a href="{% url 'normal_simulation' %}">Run another simulation</a> -->
 </body>
 </html>

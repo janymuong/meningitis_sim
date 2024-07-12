@@ -5,7 +5,24 @@
 <html>
 <head>
     <title>Intervention Strategies</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'style/result.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
 </head>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'img/thepetridish-posse-python.svg' %}" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
+            <li><a href="{% url 'vaccine_simulation' %}">♻️Run Another Simulation</a></li>
+            <!-- 
+            <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
+            <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li> -->
+        </ul>
+    </nav>
+</header>
 <body>
     <h1><h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
     <h5>Impactive Visualizations - for data-driven decisions</h5>

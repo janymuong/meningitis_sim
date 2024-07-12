@@ -1,0 +1,32 @@
+<svg width="450px" height="80px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450 80" xml:space="preserve">
+  <!-- logo for the Petri-Dish Posse Model -->
+
+  <!-- define styles -->
+  <style type="text/css">
+    .st0 {fill: #306998;}
+    .st1 {fill: #FFD43B;}
+    .st2 {fill: #4B8BBE;}
+    .st3 {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    .st4 {font-size: 26px;}
+    .st5 {font-size: 20px;}
+    .st6 {fill: #888888;}
+    .st7 {fill: #306998; stroke: #306998; stroke-width: 2; stroke-miterlimit: 10;}
+    .st8 {fill: #FFD43B; stroke: #FFD43B; stroke-width: 2; stroke-miterlimit: 10;}
+  </style>
+
+  <!-- Icon: elements to depict what pathogens look like -->
+  <g>
+    <path class="st0" d="M50,20 C40,20 35,25 35,35 L35,45 L50,45 L50,40 L45,40 L45,35 L65,35 L65,45 C65,55 55,60 45,60 C40,60 35,55 35,55 L35,65 C35,75 40,80 50,80 L70,80 C80,80 85,75 85,65 L85,35 C85,25 80,20 70,20 L50,20 Z"/>
+    <circle class="st1" cx="45" cy="25" r="5"/>
+  </g>
+  <g>
+    <path class="st2" d="M90,60 C100,60 105,55 105,45 L105,35 L90,35 L90,40 L95,40 L95,45 L75,45 L75,35 C75,25 85,20 95,20 C100,20 105,25 105,25 L105,15 C105,5 100,0 90,0 L70,0 C60,0 55,5 55,15 L55,45 C55,55 60,60 70,60 L90,60 Z"/>
+    <circle class="st1" cx="95" cy="55" r="5"/>
+  </g>
+
+  <!-- text -->
+  <text x="120" y="40" class="st3 st4" fill="#4B8BBE">The Petri-Dish Posse</text>
+  <text x="120" y="70" class="st3 st5 st6">Agent-Based</text>
+  <line class="st7" x1="120" y1="75" x2="230" y2="75"/>
+  <text x="240" y="70" class="st3 st5 st6">Modeling</text>
+</svg>

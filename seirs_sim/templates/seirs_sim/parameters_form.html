@@ -4,38 +4,40 @@
 <html>
     <head>
         <title>Agent-Based Modeling - Parameters</title>
+        <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
         <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
         <script src="{% static 'js/sim.js' %}" defer></script>
-        </head>
-        <body>
-            <header>
-                <nav class="navbar">
-                    <div class="logo">
-                        <img src="{% static 'img/thepetridish-posse-python.png' %}" alt="Logo">
-                    </div>
-                    <ul class="nav-links">
-                        <li><a href="{% url 'normal_simulation' %}">Normal Simulation</a></li>
-                        <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
-                        <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
-                        <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <div class="container">
-                <h1>Agent-Based Modeling</h1>
-                <h5>Simulating a Meningitis Infection via a <strong>SEIRs</strong> model:</h5>
-                <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population,<br/> and also how the infection works when there is an intervention.</p>
-                <div class="simcont">
-                    <!-- form for the simulation parameters -->
-                    <form method="post">
-                        {% csrf_token %}
-                        <h3>Simulation Parameters</h3>
-                        {{ form.as_p }}
-
-                        <button type="submit" class="submit_btn">Run Simulation</button>
-                    </form>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="{% static 'img/thepetridish-posse-python.svg' %}" alt="Logo">
                 </div>
+                <ul class="nav-links">
+                    <li><a href="{% url 'sim' %}">🔙 Dashboard</a></li>
+                    <li><a href="{% url 'normal_simulation' %}">Normal Simulation</a></li>
+                    <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
+                    <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
+                    <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="simcont">
+                <!-- <h1>Agent-Based Modeling</h1> -->
+                <h3>Simulating a Meningitis Infection via a <strong>SEIRs</strong> model:</h3>
+                <p>You can set model parameters below and see a visualization of the normal spread of the infection in a population,<br/> and also how the infection works when there is an intervention.</p>
+                <!-- form for the simulation parameters -->
+                <form method="post">
+                    {% csrf_token %}
+                    <h4>Simulation Parameters</h4>
+                    {{ form.as_p }}
+
+                    <button type="submit" class="submit_btn">Run Simulation</button>
+                </form>
             </div>
+        </div>
             
-</body>
+    </body>
 </html>
