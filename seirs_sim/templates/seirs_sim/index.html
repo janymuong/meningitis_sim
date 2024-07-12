@@ -1,24 +1,36 @@
 <!-- seirs_sim/templates/index.html -->
 {% extends 'seirs_sim/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container">
     <h1>Agent-Based Modeling</h1>
     <h2>A Meningitis Simulation Platform</h2>
     <div class="card-grid">
         <div class="card" onclick="location.href='{% url 'normal_simulation' %}'">
+            <div class="card-icon">
+                <img src="{% static 'img/normal_simulation.svg' %}" alt="Normal Simulation">
+            </div>
             <h2>Run Normal Simulation</h2>
             <p>Simulate without any intervention.</p>
         </div>
         <div class="card" onclick="location.href='{% url 'vaccine_simulation' %}'">
+            <div class="card-icon">
+                <img src="{% static 'img/vaccine_simulation.svg' %}" alt="Vaccine Simulation">
+            </div>
             <h2>Run Vaccine Simulation</h2>
             <p>Simulate with a general vaccination strategy.</p>
         </div>
         <div class="card" onclick="location.href='{% url 'age_based_vaccine_simulation' %}'">
+            <div class="card-icon">
+                <img src="{% static 'img/age_based_vaccine_simulation.svg' %}" alt="Age-Based Vaccine Simulation">
+            </div>
             <h2>Run Age-Based Vaccine Simulation</h2>
             <p>Simulate with an age-specific vaccination strategy.</p>
         </div>
         <div class="card" onclick="location.href='{% url 'treatment_simulation' %}'">
+            <div class="card-icon">
+                <img src="{% static 'img/treatment_simulation.svg' %}" alt="Treatment Simulation">
+            </div>
             <h2>Run Treatment Simulation</h2>
             <p>Simulate with a treatment intervention strategy.</p>
         </div>
