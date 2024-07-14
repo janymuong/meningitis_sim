@@ -6,8 +6,7 @@
 <head>
     <title>Normal Simulation Result</title>
     <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/result.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/parameters.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/result.css' %}">
 </head>
 <header>
     <nav class="navbar">
@@ -16,10 +15,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
-            <li><a href="{% url 'normal_simulation' %}"> ♻️Run Another Simulation</a></li>
-            <!-- <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
-            <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
-            <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li> -->
+            <li><a href="{% url 'normal_simulation' %}">♻️ Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
@@ -28,8 +24,10 @@
     <h1>The Petri-Dish Posse</h1>
     <h5>Impactive Visualizations - for data-driven decisions</h5>
     <p>These are the results of a normal infection spread dynamics: <br/>for <strong>meningitis</strong> without any intervention strategy for your own intuitive understanding of it.</p>
-    <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Menigitis Dynamics">
+    
+    <div class="container">
+        <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Menigitis Dynamics">
+    </div>
 
-    <!-- <a href="{% url 'normal_simulation' %}">Run another simulation</a> -->
 </body>
 </html>

@@ -45,7 +45,7 @@ class VaccineSimulationForm(forms.ModelForm):
         labels = {
             'n_agents': 'Population of Agents:',
             'n_timesteps': 'Timesteps of Simulation:',
-            'probs': 'Proportions of Vaccinated People (comma-separated):',
+            'probs': 'Comparative Proportions of Vaccinated People (comma-separated):',
             'imm_boost': 'Immunity Boost from Vaccination:'
         }
         widgets = {
@@ -57,7 +57,7 @@ class VaccineSimulationForm(forms.ModelForm):
             }),
             'n_timesteps': forms.NumberInput(attrs={
                 'type': 'range',
-                'min': '10', 'max': '60', 'step': '10',
+                'min': '10', 'max': '100', 'step': '10',
                 'class': 'slider',
                 'id': 'n-timesteps-slider'
             }),
@@ -82,7 +82,7 @@ class AgeBasedVaccineSimulationForm(forms.ModelForm):
         labels = {
             'n_agents': 'Population of Agents:',
             'n_timesteps': 'Timesteps of Simulation:',
-            'probs': 'Proportions of Vaccinated People (comma-separated) .e.g "0.5,1.0":',
+            'probs': 'Comparative Proportions of Vaccinated People (comma-separated) .e.g "0.5,1.0":',
             'imm_boost': 'Immunity Boost from Vaccination:',
             'age_range': 'Age Range for Vaccination (comma-separated lower and upper bounds, e.g., "0.75,1.5"):'
         }
@@ -95,7 +95,7 @@ class AgeBasedVaccineSimulationForm(forms.ModelForm):
             }),
             'n_timesteps': forms.NumberInput(attrs={
                 'type': 'range',
-                'min': '10', 'max': '1000', 'step': '10',
+                'min': '10', 'max': '100', 'step': '10',
                 'class': 'slider',
                 'id': 'n-timesteps-slider'
             }),
@@ -135,7 +135,7 @@ class TreatmentSimulationForm(forms.ModelForm):
             }),
             'n_timesteps': forms.NumberInput(attrs={
                 'type': 'range',
-                'min': '10', 'max': '1000', 'step': '10',
+                'min': '10', 'max': '100', 'step': '10',
                 'class': 'slider',
                 'id': 'n-timesteps-slider'
             }),

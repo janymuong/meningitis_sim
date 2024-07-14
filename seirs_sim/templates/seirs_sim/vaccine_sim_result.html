@@ -6,8 +6,7 @@
 <head>
     <title>Intervention Strategies</title>
     <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/result.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/result.css' %}">
 </head>
 <header>
     <nav class="navbar">
@@ -16,22 +15,21 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
-            <li><a href="{% url 'vaccine_simulation' %}">♻️Run Another Simulation</a></li>
-            <!-- 
-            <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
-            <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li> -->
+            <li><a href="{% url 'vaccine_simulation' %}">♻️ Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
 <body>
-    <h1><h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
+    <h1>The Petri-Dish Posse - Vaccine Simulation Result</h1>
     <h5>Impactive Visualizations - for data-driven decisions</h5>
 
     <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating size of the population vaccinated. It shows how infection is averted .</p>
-
-    {% for image_path in image_paths %}
-        <img src="{% static image_path %}" />
-    {% endfor %}
+    
+    <div class="container">
+        {% for image_path in image_paths %}
+            <img src="{% static image_path %}" alt="Vaccine Simulation Result">
+        {% endfor %}
+    </div>
 
 </body>
 </html>

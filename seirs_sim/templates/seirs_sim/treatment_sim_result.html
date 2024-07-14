@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <title>Treatment - Intervention Strategies</title>
     <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/result.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'style/sim.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/result.css' %}">
 </head>
 <header>
     <nav class="navbar">
@@ -17,10 +16,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
-            <li><a href="{% url 'treatment_simulation' %}">♻️Run Another Simulation</a></li>
-            <!-- 
-            <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccine Simulation</a></li>
-            <li><a href="{% url 'treatment_simulation' %}">Treatment Simulation</a></li> -->
+            <li><a href="{% url 'treatment_simulation' %}">♻️ Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
@@ -29,10 +25,11 @@
     <h5>Impactive Visualizations - for data-driven decisions</h5>
     <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population treated. It shows how infection is averted after this intervention.</p>
 
-    {% for image_path in image_paths %}
-        <img src="{% static image_path %}" alt="Treatment Simulation Simulation Result" />
-    {% endfor %}
+    <div class="container">
+        {% for image_path in image_paths %}
+            <img src="{% static image_path %}" alt="Treatment Simulation Result">
+        {% endfor %}
+    </div>
+
 </body>
 </html>
-
-
