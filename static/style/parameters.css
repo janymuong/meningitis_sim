@@ -120,19 +120,34 @@ form input[type="number"]::placeholder {
 }
 
 .submit_btn {
-    background-color: #333;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
     color: #fff;
+    background-color: #5477f5;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    margin: 0 auto;
 }
 
 .submit_btn:hover {
-    background-color: #555;
+    background-color: #4661d1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+.submit_btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #5477f5; /* Revert to original color on click */
+}
+
 
 /* Footer styling */
 .index-footer {
@@ -149,7 +164,65 @@ footer p {
     color: #fff;
 }
 
-/* Animations */
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    overflow: hidden;
+    pointer-events: none; /* Prevents the animation from blocking interactions */
+    z-index: -1; /* Ensure it's behind other content */
+}
+
+#agentCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+.animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px; 
+    height: 100px; 
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.animation-container:before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px; 
+    width: 200px; 
+    height: 200px; 
+    background: radial-gradient(circle, #ffffff 10%, #ffffff00 70%);
+    animation: ripple 4s infinite ease-in-out;
+    opacity: 0;
+    border-radius: 50%;
+    transform: scale(0);
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -159,3 +232,4 @@ footer p {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
