@@ -58,12 +58,14 @@ header {
 h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
+    margin-top: 0.3rem;
     animation: slideInDown 1s ease-in-out;
 }
 
 h2 {
     font-size: 1.75rem;
     margin-bottom: 2rem;
+    margin-top: 0rem;
     animation: slideInUp 1s ease-in-out;
 }
 
@@ -139,8 +141,11 @@ h2 {
 
 .index-footer {
     text-align: center;
-    padding: 1rem 0;
-    background: #2e2e2e;
+    padding: 0.5rem 0; /* Reduced padding */
+    background: #3e3e3e;
+    position: sticky;
+    margin: 0;
+    font-size: 0.75rem; /* Reduced font size */
     position: sticky;
     bottom: 0;
     margin: 0;
