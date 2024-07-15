@@ -1,6 +1,6 @@
 /* parameters.css */
 
-/* Body and general styling */
+/* general styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667db6 100%);
@@ -10,11 +10,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Header styling */
+/* header styling */
 header {
     background-color: #333;
-    padding: 1rem 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar {
@@ -23,7 +25,7 @@ header {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
 }
 
 .logo img {
@@ -33,7 +35,11 @@ header {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    position: relative;
 }
 
 .nav-links a {
@@ -41,18 +47,38 @@ header {
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: background 0.3s, color 0.3s;
+    border-radius: 5px;
+    font-size: 1rem;
+    /* white-space: nowrap; prevent text from wrapping */
 }
 
 .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    color: #ffd43b;
+    background: #5477f5;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Main content container */
+.nav-links a::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: #ffd43b;
+    transition: width 0.3s;
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* main content container */
 .container {
     text-align: center;
-    padding: 2rem 1rem;
+    /* padding: 20px; */
+    padding: 4rem 1rem 2rem;
     animation: fadeIn 1s ease-in-out;
     max-width: 1200px;
     margin: 0 auto;
@@ -78,6 +104,32 @@ h1 {
     line-height: 1.5;
 }
 
+/* Introductory section styling */
+.intro-section {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: justify; /* Justify alignment */
+    color: #fff; /* Ensure text color is readable */
+}
+
+.intro-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: slideInDown 1s ease-in-out;
+    text-align: center; /* Center align heading */
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    padding: 0 1rem; /* Padding for text */
+}
+
+
 /* Form styling */
 form {
     margin-top: 2rem;
@@ -100,7 +152,8 @@ form label {
 form input[type="range"],
 form input[type="text"],
 form input[type="number"] {
-    width: calc(100% - 220px); /* Adjust width */
+    width: calc(100% - 280px); /* Adjust width */
+    color:#999;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -110,7 +163,8 @@ form input[type="number"] {
 }
 
 form input[type="range"] {
-    width: calc(100% - 240px); /* Adjust slider width */
+    width: calc(100% - 280px); /* Adjust slider width */
+    color:#999;
     margin: 10px 0;
 }
 
@@ -118,6 +172,31 @@ form input[type="text"]::placeholder,
 form input[type="number"]::placeholder {
     color: #999;
 }
+
+/* styling for the 'probs' input field */
+input[type="text"][placeholder*="probabilities"], input[type="text"][placeholder*="Age"] {
+    width: calc(100% - 280px); /* Adjust width */
+    height: 28px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"][placeholder*="probabilities"]:focus {
+    border-color: #5477f5;
+    box-shadow: 0 0 10px rgba(84, 119, 245, 0.5);
+}
+
+input[type="text"][placeholder*="probabilities"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
 
 .submit_btn {
     display: inline-block;
@@ -148,15 +227,17 @@ form input[type="number"]::placeholder {
     background-color: #5477f5; /* Revert to original color on click */
 }
 
-
 /* Footer styling */
 .index-footer {
     text-align: center;
-    padding: 1rem 0;
-    background: #2e2e2e;
+    padding: 0.5rem 0; /* Reduced padding */
+    background: #3e3e3e;
+    position: sticky;
+    margin: 0;
+    font-size: 0.75rem; /* Reduced font size */
     position: sticky;
     bottom: 0;
-    margin-top: 2rem;
+    margin: 0;
     z-index: 1;
 }
 
@@ -168,11 +249,11 @@ footer p {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Adjust width as needed */
-    height: 100%; /* Adjust height as needed */
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     pointer-events: none; /* Prevents the animation from blocking interactions */
-    z-index: -1; /* Ensure it's behind other content */
+    z-index: -1;
 }
 
 #agentCanvas {
@@ -181,25 +262,13 @@ footer p {
     display: block;
 }
 
-
-.animation-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px; 
-    height: 100px; 
-    overflow: hidden;
-    pointer-events: none;
-    z-index: -1;
-}
-
 .animation-container:before {
     content: "";
     position: absolute;
     top: -50px;
-    left: -50px; 
-    width: 200px; 
-    height: 200px; 
+    left: -50px;
+    width: 200px;
+    height: 200px;
     background: radial-gradient(circle, #ffffff 10%, #ffffff00 70%);
     animation: ripple 4s infinite ease-in-out;
     opacity: 0;
@@ -222,7 +291,6 @@ footer p {
     }
 }
 
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -232,4 +300,3 @@ footer p {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
-

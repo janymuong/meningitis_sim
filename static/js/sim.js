@@ -13,20 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('agentCanvas');
     const ctx = canvas.getContext('2d');
 
+    // Set canvas dimensions
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
     // Define agents with colors
     const agents = [
-        { x: 50, y: 50, color: '#ff0000' }, 
-        { x: 100, y: 100, color: '#00ff00' },
-    
+        { x: 50, y: 50, color: '#ff0000' }, // Red
+        { x: 100, y: 100, color: '#00ff00' }, // Green
+        { x: 150, y: 150, color: '#0000ff' } // Blue
     ];
 
     let animationCount = 0;
-    const totalAnimations = 3; 
+    const totalAnimations = 3;
 
     function drawAgents() {
         ctx.clearRect(0, 0, canvas.width, canvas.height); 
