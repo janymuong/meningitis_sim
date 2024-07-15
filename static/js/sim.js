@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Define agents with colors
     const agents = [
-        { x: 50, y: 50, color: '#ff0000' }, // Red
-        { x: 100, y: 100, color: '#00ff00' }, // Green
-        { x: 150, y: 150, color: '#0000ff' } // Blue
+        { x: 150, y: 170, color: '#ff0000' }, // Red
+        { x: 320, y: 320, color: '#00ff00' }, // Green
+        { x: 970, y: 205, color: '#0000ff' } // Blue
     ];
 
     let animationCount = 0;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         agents.forEach(agent => {
             ctx.fillStyle = agent.color;
             ctx.beginPath();
-            ctx.arc(agent.x, agent.y, 10, 0, Math.PI * 2);
+            ctx.arc(agent.x, agent.y, 43, 0, Math.PI * 2);
             ctx.fill();
         });
 
