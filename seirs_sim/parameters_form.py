@@ -61,6 +61,7 @@ class VaccineSimulationForm(forms.ModelForm):
                 'class': 'slider',
                 'id': 'n-timesteps-slider'
             }),
+            'probs': forms.TextInput(attrs={'placeholder': 'Comma-separated probabilities, e.g "0.3,0.5"'}),
             'imm_boost': forms.NumberInput(attrs={
                 'type': 'range',
                 'min': '0', 'max': '5', 'step': '0.1',
