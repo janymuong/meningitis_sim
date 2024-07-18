@@ -1,7 +1,5 @@
-/* result.css */
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
     margin: 0;
@@ -44,8 +42,39 @@ header {
     border-radius: 5px;
 }
 
-h1, h5 {
+main {
+    padding: 2rem 1rem;
+}
+
+.intro {
     text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 1rem; /* Added padding */
+}
+
+.intro h1 {
+    font-size: 2.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro h5 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+}
+
+/* Adjusted for even spreading */
+.intro h1, .intro h5, .intro p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
@@ -57,16 +86,16 @@ h1 {
 h5 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: 300;
 }
 
 p {
-    text-align: center;
     font-size: 1.1rem;
     margin-bottom: 2rem;
     padding: 0 2rem;
 }
 
-.container {
+.results .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,17 +103,27 @@ p {
     padding: 1rem;
 }
 
-.container img {
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-wrapper img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #fff;
-    border-radius: 10px;
+    transition: transform 0.3s ease;
+    border: 2px solid #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05);
 }
 
 .index-footer {
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     background: #2e2e2e;
     font-size: 0.75rem;
     position: sticky;
@@ -92,7 +131,7 @@ p {
     width: 100%;
 }
 
-footer p {
+.index-footer p {
     margin: 0;
     color: #fff;
 }

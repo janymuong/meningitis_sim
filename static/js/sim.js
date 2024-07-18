@@ -1,4 +1,4 @@
-// Javascript for the slider
+// JavaScript for the slider
 document.addEventListener('DOMContentLoaded', function() {
     const sliders = document.querySelectorAll('.slider');
     
@@ -25,33 +25,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const agents = [
         { x: 150, y: 170, color: '#ff0000' }, // Red
         { x: 320, y: 320, color: '#00ff00' }, // Green
-        { x: 970, y: 205, color: '#0000ff' } // Blue
+        { x: 970, y: 205, color: '#0000ff' }  // Blue
     ];
 
-    let animationCount = 0;
-    const totalAnimations = 3;
+    function drawPhagocyte(ctx, x, y, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x + Math.random() * 30 - 15, y + Math.random() * 30 - 15);
+        for (let i = 0; i < 10; i++) {
+            ctx.lineTo(x + Math.random() * 100 - 50, y + Math.random() * 100 - 50);
+        }
+        ctx.closePath();
+        ctx.fill();
+    }
 
     function drawAgents() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height); 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         agents.forEach(agent => {
-            ctx.fillStyle = agent.color;
-            ctx.beginPath();
-            ctx.arc(agent.x, agent.y, 43, 0, Math.PI * 2);
-            ctx.fill();
+            drawPhagocyte(ctx, agent.x, agent.y, agent.color);
         });
 
         agents.forEach(agent => {
-            agent.x += Math.random() * 2 - 1;
-            agent.y += Math.random() * 2 - 1;
+            agent.x += Math.random() * 4 - 2;
+            agent.y += Math.random() * 4 - 2;
         });
 
-        animationCount++;
-
-        if (animationCount < totalAnimations) {
-            requestAnimationFrame(drawAgents);
-        }
+        requestAnimationFrame(drawAgents);
     }
 
     drawAgents();
 });
-
