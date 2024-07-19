@@ -6,17 +6,21 @@ from django.conf import settings
 import numpy as np
 # import sciris as sc
 import starsim as ss
-from starsim.diseases.sir import SIR
+from starsim.diseases.sir import SIR # for creating a SIR disease
 import matplotlib.pyplot as plt # plotting/visualizations
 
 
 __all__ = ['Meningitis']
 
 class Meningitis(SIR):
+    '''this class serves as the model for meningitis
+    starsim already implements SIR;
+    we will extend this SIR class to include the exposed compartment
+    '''
     def __init__(self, pars=None, par_dists=None, *args, **kwargs):
-        """
+        '''
         Initialize with parameters
-        """
+        '''
         pars = ss.omergeleft(pars,
             dur_exp_inf = 2,    # (days)
             dur_exp_rec = 2,    # (days)
@@ -24,10 +28,10 @@ class Meningitis(SIR):
             dur_rec = 7,        # (days)
             p_death = 0.05,     # (prob of death) 
             p_symptoms = 0.4,   # probability of showing symptoms 
-            init_prev = 0.005,  # Init cond
-            beta = 0.08,        # Init cond
-            rel_beta_inf = 0.5, # Reduction in transmission for I versus E
-            waning = 1/(365*3),
+            init_prev = 0.005,  # proportion of the population initially infected
+            beta = 0.08,        # transmission rate
+            rel_beta_inf = 0.5, # reduction in transmission for I versus E
+            waning = 1/(365*3), # this is immunity gained from contracting the disease
             imm_boost = 0.001
         )
         
@@ -218,7 +222,7 @@ class Meningitis(SIR):
         return new_cases, sources
         
     def plot(self):
-        ''' default plot for SEIRS model
+        ''' default plot for SEIRs model
         '''
         fig = plt.figure()
         for rkey in ['susceptible', 'exposed', 'infected', 'recovered']:
@@ -234,9 +238,9 @@ class Meningitis(SIR):
 
 
 def plot_more(sim, var, add=False, nrow=2, ncol=2, figsize=(8, 8)):
-    '''this is for the prevalanece summary feature
+    '''this is for the prevalence summary feature:
     a visual for cumulative:
-        infections, exposed, susceptible etc
+        infections, exposed, prevalence etc
     '''
     if (ncol * nrow) > len(var):
         ncol = 1
