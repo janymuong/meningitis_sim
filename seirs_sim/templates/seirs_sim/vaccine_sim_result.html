@@ -15,20 +15,30 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
-            <li><a href="{% url 'vaccine_simulation' %}">♻️ Run Another Simulation</a></li>
+            <li><a href="{% url 'vaccine_simulation' %}">Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
 <body>
-    <h1>Vaccine Simulation Result</h1>
-    <h5>Impactive Visualizations - for data-driven decisions</h5>
-
-    <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating size of the population vaccinated. It shows how infection is averted .</p>
-    
-    <div class="container">
-        {% for image_path in image_paths %}
-            <img src="{% static image_path %}" alt="Vaccine Simulation Result">
-        {% endfor %}
-    </div>
+    <main>
+        <section class="intro">
+            <img src="{% static 'img/virus_sim.jpg' %}" class="intro-image" alt="Virus Simulation">
+            <div class="intro-text">
+                <h1>Vaccine Simulation Result</h1>
+                <h5>Impactive Visualizations - for data-driven decisions</h5>
+                <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating size of the population vaccinated. It shows how infection is averted.</p>
+            </div>
+        </section>
+        <section class="results">
+            <div class="container">
+                {% for image_path in image_paths %}
+                    <div class="image-wrapper">
+                        <img src="{% static image_path %}" alt="Vaccine Simulation Result">
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
 </body>
 </html>
+

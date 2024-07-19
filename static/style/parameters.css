@@ -74,9 +74,6 @@ header {
     width: 100%;
 }
 
-
-
-/* Add this section to your existing CSS file */
 .nav-links a.active {
     background: #5477f5;
     color: #fff;

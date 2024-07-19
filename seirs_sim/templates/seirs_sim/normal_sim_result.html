@@ -1,4 +1,4 @@
-<!-- meningitis_sim/seirs_sim/templates/seirs_sim/simulation_result.html -->
+<!-- meningitis_sim/seirs_sim/templates/seirs_sim/normal_sim_result.html -->
 
 {% load static %}
 <!DOCTYPE html>
@@ -7,6 +7,7 @@
     <title>Normal Simulation Result</title>
     <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style/result.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/normal_sim_result.css' %}">
 </head>
 <header>
     <nav class="navbar">
@@ -14,20 +15,32 @@
             <img src="{% static 'img/thepetridish-posse-python.svg' %}" alt="Logo">
         </div>
         <ul class="nav-links">
-            <li><a href="{% url 'sim' %}">🔙 Dashboard </a></li>
-            <li><a href="{% url 'normal_simulation' %}">♻️ Run Another Simulation</a></li>
+            <li><a href="{% url 'sim' %}">🔙 Dashboard</a></li>
+            <li><a href="{% url 'normal_simulation' %}">Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
 <body>
-
-    <h1>The Petri-Dish Posse</h1>
-    <h5>Impactive Visualizations - for data-driven decisions</h5>
-    <p>These are the results of a normal infection spread dynamics: <br/>for <strong>meningitis</strong> without any intervention strategy for your own intuitive understanding of it.</p>
-    
-    <div class="container">
-        <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Menigitis Dynamics">
-    </div>
-
+    <main>
+        <section class="intro">
+            <img src="{% static 'img/virus_sim.jpg' %}" class="intro-image" alt="Virus Simulation">
+            <div class="intro-text">
+                <h1>The Petri-Dish Posse</h1>
+                <h5>Impactive Visualizations - for data-driven decisions</h5>
+                <p>These are the results of a normal infection spread dynamics: <br/>for <strong>meningitis</strong> without any intervention strategy for your own intuitive understanding of it.</p>
+            </div>
+        </section>
+        <section class="results">
+            <div class="container dynamics-container">
+                <h2>Simulation Dynamics</h2>
+                <img src="{% static 'figs/meningitis_dynamics.png' %}" alt="Meningitis Dynamics">
+                <p class="dynamics-description">This visualization depicts the intricate patterns of how meningitis spreads through an environment. These are insights for the underlying trends and interactions that drive the infection spread.</p>
+            </div>
+            <div class="container">
+                <h2>Prevalence Summary</h2>
+                <img src="{% static 'figs/dynamic_summary.png' %}" alt="Dynamic Summary">
+            </div>
+        </section>
+    </main>
 </body>
 </html>

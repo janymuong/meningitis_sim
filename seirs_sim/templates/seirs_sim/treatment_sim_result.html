@@ -15,16 +15,19 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard</a></li>
-            <li><a href="{% url 'age_based_vaccine_simulation' %}">♻️ Run Another Simulation</a></li>
+            <li><a href="{% url 'age_based_vaccine_simulation' %}">Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
 <body>
     <main>
         <section class="intro">
-            <h1>Age-Based Vaccine Simulation Result</h1>
-            <h5>Impactful Visualizations - for Data-Driven Decisions</h5>
-            <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population vaccinated within the specified age range. It shows how infection is averted within the age group.</p>
+            <img src="{% static 'img/virus_sim.jpg' %}" class="intro-image" alt="Virus Simulation">
+            <div class="intro-text">
+                <h1>Age-Based Vaccine Simulation Result</h1>
+                <h5>Impactive Visualizations - for data-driven decisions</h5>
+                <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population vaccinated within the specified age range. It shows how infection is averted within the age group.</p>
+            </div>
         </section>
         <section class="results">
             <div class="container">
