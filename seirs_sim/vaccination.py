@@ -8,17 +8,19 @@ import matplotlib.pyplot as plt  # plotting/visualizations
 
 class Vaccine(ss.Intervention):
     def __init__(self, timestep=100, prob=0.5, imm_boost=2.0):
+        '''Initialize the intervention'''
         super().__init__()
-        self.timestep = timestep
-        self.prob = prob
-        self.imm_boost = imm_boost
+        self.timestep = timestep # store the timestep the vaccine is applied on
+        self.prob = prob # Store the probability of vaccination
+        self.imm_boost = imm_boost # Store the amount by which immunity is boosted
 
     def apply(self, sim):
-        if sim.ti == self.timestep:
+        ''' Apply the vaccine'''
+        if sim.ti == self.timestep: # Only apply on the matching timestep
             meningitis = sim.diseases.meningitis
             eligible_ids = sim.people.uid[meningitis.susceptible]
-            n_eligible = len(eligible_ids)
-            to_vaccinate = self.prob > np.random.rand(n_eligible)
+            n_eligible = len(eligible_ids) # number of people who are eligible
+            to_vaccinate = self.prob > np.random.rand(n_eligible) # define which of the n_eligible people get vaccinated
             vaccine_ids = eligible_ids[to_vaccinate]
             meningitis.immunity[vaccine_ids] += self.imm_boost
 
@@ -47,9 +49,11 @@ def vac_prob(probs=[0.3, 0.5]):
             results.n_infected = sim.results.meningitis.n_infected
             return results
 
+        # run the simulations in parallel
         baseline_sim_results = sc.parallelize(run_sim, baseline_sims)
         vaccine_sim_results = sc.parallelize(run_sim, vaccine_sims)
 
+        # pull out the results
         for seed in range(n_seeds):
             baseline = baseline_sim_results[seed]
             vaccine = vaccine_sim_results[seed]
@@ -57,6 +61,7 @@ def vac_prob(probs=[0.3, 0.5]):
             vaccine_results[seed, :] = vaccine.n_infected
             difference_results[seed] = baseline_results[seed, :].sum() - vaccine_results[seed, :].sum()
 
+        # quantiles for plots;
         lower_bound_baseline = np.quantile(baseline_results, 0.05, axis=0)
         median_baseline = np.quantile(baseline_results, 0.5, axis=0)
         upper_bound_baseline = np.quantile(baseline_results, 0.95, axis=0)
@@ -64,8 +69,9 @@ def vac_prob(probs=[0.3, 0.5]):
         median_vaccine = np.quantile(vaccine_results, 0.5, axis=0)
         upper_bound_vaccine = np.quantile(vaccine_results, 0.95, axis=0)
 
-        time = baseline.time
+        time = baseline.time # time vector for plotting
 
+        # calculate differences
         lower_bound_diff = np.quantile(difference_results, 0.05)
         upper_bound_diff = np.quantile(difference_results, 0.95)
         median_diff = np.quantile(difference_results, 0.5)

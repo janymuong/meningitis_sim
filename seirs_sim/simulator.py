@@ -17,6 +17,9 @@ class People(ss.People):
         return self.age
     
 def make_sim(seed=1, n_agents=2000, n_timesteps=50, use_vaccine=False, timestep=10, prob=0.5, imm_boost=2.0):
+    '''this function should make the simulation for the vaccinated simulation environment
+    don't run it yet;
+    '''
     pars = dict(
         n_agents=n_agents,
         start=0,
@@ -33,6 +36,7 @@ def make_sim(seed=1, n_agents=2000, n_timesteps=50, use_vaccine=False, timestep=
 
     people = People(n_agents=n_agents, age_data=age_data)
 
+    # define "baseline" and "intervention" sims without and with the vaccine
     if use_vaccine:
         from .vaccination import Vaccine
         vaccine = Vaccine(timestep=timestep, prob=prob, imm_boost=imm_boost)
