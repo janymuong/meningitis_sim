@@ -8,7 +8,6 @@ import numpy as np
 import starsim as ss
 from starsim.diseases.sir import SIR
 import matplotlib.pyplot as plt # plotting/visualizations
-# from .models import SimulationParameters
 
 
 __all__ = ['Meningitis']
@@ -80,33 +79,33 @@ class Meningitis(SIR):
         return self.infected | self.exposed
 
     def update_pre(self, sim):
-        # # Progress susceptible -> exposed
+        # progress susceptible -> exposed
         # susceptible_exp = ss.true(self.susceptible & (self.ti_exposed <= sim.ti))
         # self.susceptible[susceptible_exp] = False
         # self.exposed[susceptible_exp] = True
 
-        # Progress exposed -> recovered
+        # progress exposed -> recovered
         exposed_recovered = ss.true(self.exposed & (self.ti_recovered <= sim.ti))
         self.exposed[exposed_recovered] = False
         self.recovered[exposed_recovered] = True
         
-        # Progress exposed -> infected
+        # progress exposed -> infected
         infected = ss.true(self.exposed & (self.ti_infected <= sim.ti))
         self.exposed[infected] = False
         self.infected[infected] = True
 
-        # Progress infected -> recovered
+        # progress infected -> recovered
         recovered = ss.true(self.infected & (self.ti_recovered <= sim.ti))
         self.infected[recovered] = False
         self.recovered[recovered] = True
 
-        # Progress recovered -> susceptible
+        # progress recovered -> susceptible
         susceptible = ss.true(self.recovered & (self.ti_susceptible <= sim.ti))
         self.recovered[susceptible] = False
         self.susceptible[susceptible] = True
         self.update_immunity(sim)
 
-        # Trigger deaths
+        # trigger deaths
         deaths = ss.true(self.ti_dead <= sim.ti)
         if len(deaths):
             sim.people.request_death(deaths)
@@ -232,7 +231,29 @@ class Meningitis(SIR):
         plt.legend()
         plt.close()
         return fig
-    
+
+
+def plot_more(sim, var, add=False, nrow=2, ncol=2, figsize=(8, 8)):
+    '''this is for the prevalanece summary feature
+    a visual for cumulative:
+        infections, exposed, susceptible etc
+    '''
+    if (ncol * nrow) > len(var):
+        ncol = 1
+        nrow = len(var)
+    fig, axs = plt.subplots(nrow, ncol, figsize=figsize)
+    for i, ax in enumerate(axs.flatten()):
+        x = sim.tivec
+        if add:
+            y = sim.results.meningitis[var[i]]
+        else:
+            y = sim.results[var[i]]
+        ax.plot(x, y)
+        ax.set_title(var[i])
+    plt.tight_layout()
+    return fig
+
+
 def run_simulation(parameters):
     '''this method runs the simulation
     with paramaters passed to the model from the UI
@@ -256,7 +277,16 @@ def run_simulation(parameters):
     pars = dict(networks=dict(type='random'), start=2000, end=2100, dt=1, verbose=0)
     sim = ss.Sim(pars, diseases=meningitis)
     sim.run()
+
+    # normal sim visualization;
     fig = meningitis.plot()
     fig_path = os.path.join(settings.BASE_DIR, "static", "figs", "meningitis_dynamics.png")
     fig.savefig(fig_path)
+
+    # plots for prevalence dynamics summary
+    vars = ['n_exposed', 'prevalence', 'new_infections', 'cum_infections']
+    p0 = plot_more(sim, vars, add=True)
+    p0_path = os.path.join(settings.BASE_DIR, "static", "figs", "dynamic_summary.png")
+    p0.savefig(p0_path)
+
     return fig

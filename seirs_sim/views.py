@@ -35,8 +35,9 @@ def normal_simulation(request):
 def normal_simulation_result(request):
     '''visualizations in terms of graphs for data-decision making'''
     return render(request, 'seirs_sim/normal_sim_result.html', 
-                  {'image_path': 'static/figs/meningitis_dynamics.png'})
-
+                  {'image_path': 'static/figs/meningitis_dynamics.png',
+                   'dynamic_summary_path': 'static/figs/dynamic_summary.png'
+                   })
 
 def vaccine_simulation(request):
     '''this route is for a simulation
