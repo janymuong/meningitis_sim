@@ -14,11 +14,11 @@
                 <img src="{% static 'img/thepetridish-posse-python.svg' %}" alt="Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="{% url 'sim' %}">Dashboard</a></li>
-                <li><a href="{% url 'normal_simulation' %}">Normal Simulation</a></li>
-                <li><a href="{% url 'vaccine_simulation' %}">Vaccine Simulation</a></li>
-                <li><a href="{% url 'age_based_vaccine_simulation' %}">Age-Based Vaccination</a></li>
-                <li><a href="{% url 'treatment_simulation' %}">Treatment</a></li>
+                <li><a href="{% url 'sim' %}" class="{% if request.resolver_match.url_name == 'sim' %}active{% endif %}">Dashboard</a></li>
+                <li><a href="{% url 'normal_simulation' %}" class="{% if request.resolver_match.url_name == 'normal_simulation' %}active{% endif %}">Normal Simulation</a></li>
+                <li><a href="{% url 'vaccine_simulation' %}" class="{% if request.resolver_match.url_name == 'vaccine_simulation' %}active{% endif %}">Vaccine Simulation</a></li>
+                <li><a href="{% url 'age_based_vaccine_simulation' %}" class="{% if request.resolver_match.url_name == 'age_based_vaccine_simulation' %}active{% endif %}">Age-Based Vaccination</a></li>
+                <li><a href="{% url 'treatment_simulation' %}" class="{% if request.resolver_match.url_name == 'treatment_simulation' %}active{% endif %}">Treatment</a></li>
             </ul>
         </nav>
     </header>
