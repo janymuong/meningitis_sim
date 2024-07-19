@@ -16,6 +16,7 @@
 .container h2 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
+    text-align: center;
 }
 
 .container img {
@@ -50,7 +51,7 @@
     border-radius: 5px;
     font-size: 1rem;
     line-height: 1.4;
-    text-align: center;
+    text-align: justify;
     transform: translateY(20px);
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
