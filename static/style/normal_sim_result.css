@@ -53,7 +53,7 @@
     line-height: 1.4;
     text-align: justify;
     transform: translateY(20px);
-    opacity: 0;
+    opacity: 0.4;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
