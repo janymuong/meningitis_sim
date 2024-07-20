@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Intervention Strategy: Agent-Based Vaccination</title>
+    <title>Intervention Strategy: Treatment</title>
     <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style/result.css' %}">
 </head>
@@ -15,7 +15,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="{% url 'sim' %}">🔙 Dashboard</a></li>
-            <li><a href="{% url 'age_based_vaccine_simulation' %}">Run Another Simulation</a></li>
+            <li><a href="{% url 'treatment_simulation' %}">Run Another Simulation</a></li>
         </ul>
     </nav>
 </header>
@@ -24,23 +24,23 @@
         <section class="intro">
             <img src="{% static 'img/virus_sim.jpg' %}" class="intro-image" alt="Virus Simulation">
             <div class="intro-text">
-                <h1>Age-Based Vaccine Simulation Result</h1>
+                <h1>Treatment Simulation Result</h1>
                 <h5>Impactive Visualizations - for data-driven decisions</h5>
-                <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population vaccinated within the specified age range. It shows how infection is averted within the age group.</p>
+                <p>These are the results of infection spread dynamics for <strong>meningitis</strong> with different probabilities indicating the proportion of the population treated. It shows how infection is averted with this intervention strategy.</p>
             </div>
         </section>
         <section class="results">
             <div class="container">
                 {% for image_path in image_paths %}
                     <div class="image-wrapper">
-                        <img src="{% static image_path %}" alt="Age-Based Vaccine Simulation Result">
+                        <img src="{% static image_path %}" alt="Treatment Simulation Result">
                     </div>
                 {% endfor %}
             </div>
         </section>
     </main>
     <footer class="index-footer">
-        <p>&copy; 2024 Meningitis Simulation Project. All rights reserved.</p>
+        <p>&copy; 2024 The Epidemix Project: for Meningitis Simulation. All rights reserved.</p>
     </footer>
 </body>
 </html>
