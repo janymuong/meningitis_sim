@@ -290,23 +290,26 @@ Resources:
       UserData:
         Fn::Base64: !Sub |
           #!/bin/bash
+          set -e
+
           apt-get update -y
           apt-get install -y python3-pip python3-dev libpq-dev nginx git
-          pip3 install virtualenv
+          apt-get install -y python3-virtualenv
 
-          # setup virtual environment
-          virtualenv /home/ubuntu/virus_sim
-          source /home/ubuntu/virus_sim/bin/activate
+          # set up virtual environment
+          mkdir -p /home/ubuntu/meningitis_sim
+          python3 -m virtualenv /home/ubuntu/meningitis_sim/venv
+          source /home/ubuntu/meningitis_sim/venv/bin/activate
 
           git clone https://github.com/janymuong/meningitis_sim.git /home/ubuntu/meningitis_sim
           cd /home/ubuntu/meningitis_sim
 
           pip install -r requirements.txt
-
-          python manage.py makemigrations && python manage.py migrate
+          python manage.py makemigrations
+          python manage.py migrate
           python manage.py collectstatic --noinput
 
-          # configure Nginx to serve out pages
+          # Configure Nginx
           cat > /etc/nginx/sites-available/default << 'EOF'
           server {
               listen 80;
@@ -336,7 +339,7 @@ Resources:
           EOF
 
           systemctl restart nginx
-          nohup python manage.py runserver 0.0.0.0:8000 > /home/ubuntu/django.log 2>&1 &
+          nohup /home/ubuntu/meningitis_sim/venv/bin/python manage.py runserver 0.0.0.0:8000 > /home/ubuntu/django.log 2>&1 &
 
       ImageId: !Ref AMItoUse
       SecurityGroups:
