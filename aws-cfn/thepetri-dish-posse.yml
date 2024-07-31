@@ -307,7 +307,6 @@ Resources:
           pip install -r requirements.txt
           python manage.py makemigrations
           python manage.py migrate
-          python manage.py collectstatic --noinput
 
           # Configure Nginx
           cat > /etc/nginx/sites-available/default << 'EOF'
