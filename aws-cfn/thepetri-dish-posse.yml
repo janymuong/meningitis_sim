@@ -294,22 +294,19 @@ Resources:
           apt-get install -y python3-pip python3-dev libpq-dev nginx git
           pip3 install virtualenv
 
-          # Setup virtual environment
+          # setup virtual environment
           virtualenv /home/ubuntu/virus_sim
           source /home/ubuntu/virus_sim/bin/activate
 
-          # Clone your project repository
           git clone https://github.com/janymuong/meningitis_sim.git /home/ubuntu/meningitis_sim
           cd /home/ubuntu/meningitis_sim
 
-          # Install Python dependencies
           pip install -r requirements.txt
 
-          # Django setup
           python manage.py makemigrations && python manage.py migrate
           python manage.py collectstatic --noinput
 
-          # Configure Nginx
+          # ocnfigure Nginx to serve out pages
           cat > /etc/nginx/sites-available/default << 'EOF'
           server {
               listen 80;
@@ -338,8 +335,7 @@ Resources:
           }
           EOF
 
-          # Restart Nginx to apply the new configuration
-          service nginx restart
+          syatemctl restart nginx
 
           # Start Django application
           nohup python manage.py runserver 0.0.0.0:8000 > /home/ubuntu/django.log 2>&1 &
