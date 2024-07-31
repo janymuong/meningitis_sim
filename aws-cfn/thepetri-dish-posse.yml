@@ -336,8 +336,6 @@ Resources:
           EOF
 
           syatemctl restart nginx
-
-          # Start Django application
           nohup python manage.py runserver 0.0.0.0:8000 > /home/ubuntu/django.log 2>&1 &
 
       ImageId: !Ref AMItoUse
