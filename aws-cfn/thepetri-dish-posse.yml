@@ -306,7 +306,7 @@ Resources:
           python manage.py makemigrations && python manage.py migrate
           python manage.py collectstatic --noinput
 
-          # ocnfigure Nginx to serve out pages
+          # configure Nginx to serve out pages
           cat > /etc/nginx/sites-available/default << 'EOF'
           server {
               listen 80;
@@ -335,7 +335,7 @@ Resources:
           }
           EOF
 
-          syatemctl restart nginx
+          systemctl restart nginx
           nohup python manage.py runserver 0.0.0.0:8000 > /home/ubuntu/django.log 2>&1 &
 
       ImageId: !Ref AMItoUse
