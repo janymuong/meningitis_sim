@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dj-starsim
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8000
+  selector:
+    app: dj-starsim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dj-starsim
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 2
+  selector:
+    matchLabels:
+      app: dj-starsim
+  template:
+    metadata:
+      labels:
+        app: dj-starsim
+    spec:
+      containers:
+        - name: dj-starsim
+          image: CONTAINER_IMAGE
+          securityContext:
+            privileged: false
+            readOnlyRootFilesystem: false
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 8000
