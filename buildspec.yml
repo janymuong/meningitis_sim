@@ -42,7 +42,7 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
         - echo `ls -l`
 
-        # install python and pip dependencies in a Linux t2.medium
+        # install python and pip dependencies in a Linux t3.medium
         - python3 -m pip install --upgrade pip
         - python3 -m pip install -r requirements.txt
   build:
@@ -59,3 +59,7 @@ phases:
       - printf '[{"name":"dj_starsim","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files: build.json
+
+env:
+  parameter-store:         
+    JWT_SECRET: JWT_SECRET
