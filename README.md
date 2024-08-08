@@ -83,8 +83,8 @@ Quit the server with CONTROL-C.
 ```
 
 ---
-## Run Simulations In [`Docker`](https://www.docker.com/)
-> One caveat to this Starsim setup is: this simulation environments won't run properly on windows - I cannot give a full explanation on this but it probably has to do with handling threading.  
+## Run Simulations - [`Docker`](https://www.docker.com/)
+> One caveat to this **Starsim** setup is: this simulation environments won't run properly on windows - I cannot give a full explanation on this but it probably has to do with handling processes/threading.  
 
 You can use containers: view the [`Dockerfile`](./Dockerfile) for the container setup. 
 
@@ -94,4 +94,4 @@ docker build -t meningitis_sim .
 # run django/simulation in container
 docker run -d -p 8000:8000 --name sim meningitis_sim
 ```
-
+View the app in-browser: [`http://localhost:8000/`](http://127.0.0.1:8000/)
