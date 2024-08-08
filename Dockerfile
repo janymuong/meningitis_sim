@@ -9,10 +9,10 @@ COPY . /app
 # install needed packages
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /app/dj_sim.sh
 
 # make port 8000 available to the world outside this container
 EXPOSE 8000
 
 # on container launch
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/dj_sim.sh"]
